@@ -30,5 +30,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /**
  * Check if WooCommerce is active
  */
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+    exit;
+}
+
+define('WCP_PATH', dirname(__FILE__));
+
+if (!class_exists('WooCommerce_Plivo')) {
+
+    final class WooCommerce_Plivo
+    {
+        protected static $_instance = null;
+
+        function __construct()
+        {
+            $this->includes();
+            new WCP_Add_Tab();
+            new WCP_Setting_Fields();
+        }
+
+        public static function instance()
+        {
+            if (is_null(self::$_instance)) {
+                self::$_instance = new self();
+            }
+            return self::$_instance;
+        }
+
+        public function includes(){
+            include(trailingslashit(WCP_PATH).'classes/admin/WCP_Add_Tab.php');
+            include(trailingslashit(WCP_PATH).'classes/admin/WCP_Setting_Fields.php');
+
+        }
+
+
+
+    }
+    WooCommerce_Plivo::instance();
 }
