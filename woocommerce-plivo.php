@@ -35,6 +35,19 @@ if(!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     exit;
 }
 
+if ( ! defined( 'WCP_FILE' ) ) {
+    define( 'WCP_FILE', __FILE__ );
+}
+
+if ( ! defined( 'WCP_PATH' ) ) {
+    define( 'WCP_PATH', plugin_dir_path( WCP_FILE ) );
+}
+
+if ( ! defined( 'WCP_BASENAME' ) ) {
+    define( 'WCP_BASENAME', plugin_basename( WCP_FILE ) );
+}
+
+
 if(!class_exists('WooCommerce_Plivo'))
 {
 
@@ -154,6 +167,7 @@ if(!class_exists('WooCommerce_Plivo'))
                 function ()
                 {
                     new WCP_Admin_Add_Tab();
+                    new WCP_Admin_Add_Settings_Link();
                     new WCP_Admin_Setting_Fields();
                 }
             );
