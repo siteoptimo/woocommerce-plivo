@@ -1,5 +1,4 @@
 (function($) {
-
     var $submitButton = $("#wcp_send_button + .description .button");
     var $phoneNumber = $("#wcp_demo_phone_number");
     var $message = $("#wcp_demo_message");
@@ -26,10 +25,28 @@
                 dataType: 'JSON'
 
             });
-
-
-            console.log('clicked');
         })
     }
+    $( "select option").each(function(){
+        if($(this).is(':selected')){
+            var slug = $(this).val();
+            $('textarea#wcp_notification_message_'+slug).closest('tr').show();
+        }else{
+            var slug = $(this).val();
+            $('textarea#wcp_notification_message_'+slug).closest('tr').hide();
+        }
+    });
 
+    $('select#wcp_notification').change(function() {
+        $( "select option").each(function(){
+            if($(this).is(':selected')){
+            var slug = $(this).val();
+            $('textarea#wcp_notification_message_'+slug).closest('tr').show();
+            }else{
+                var slug = $(this).val();
+                $('textarea#wcp_notification_message_'+slug).closest('tr').hide();
+            }
+        });
+
+    });
 })(jQuery);
