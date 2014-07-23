@@ -1,5 +1,7 @@
 <?php
 #require_once trailingslashit(dirname(dirname(__FILE__)) . 'HTTP/Request2.php');
+#require_once 'HTTP/Request2.php';
+require_once 'HTTP/Request2.php';
 
 
 class PlivoError extends Exception { }
@@ -670,8 +672,8 @@ class Response extends Element {
         parent::__construct(NULL);
     }
 
-    public function toXML() {
-        $xml = parent::toXML($header=TRUE);
+    public function toXML($header = true) {
+        $xml = parent::toXML($header);
         return $xml;
     }
 }

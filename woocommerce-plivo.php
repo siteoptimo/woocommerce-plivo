@@ -30,11 +30,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /**
  * Check if WooCommerce is active
  */
-if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+if(!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins'))))
+{
     exit;
 }
 
-if (!class_exists('WooCommerce_Plivo')) {
+if(!class_exists('WooCommerce_Plivo'))
+{
 
     final class WooCommerce_Plivo
     {
@@ -42,27 +44,26 @@ if (!class_exists('WooCommerce_Plivo')) {
 
         function __construct()
         {
-            if ( function_exists( "__autoload" ) ) {
-                spl_autoload_register( "__autoload" );
+            if(function_exists("__autoload"))
+            {
+                spl_autoload_register("__autoload");
             }
 
             spl_autoload_register(array($this, 'autoload'));
+            spl_autoload_register(array($this, 'autoload_plivo'));
 
             $this->includes();
             $this->register_scripts();
-            add_action(
-                'init',
-                function () {
-                    new WCP_Admin_Add_Tab();
-                    new WCP_Admin_Setting_Fields();
-                }
-            );
+
+
+            $this->init();
 
         }
 
         public static function instance()
         {
-            if (is_null(self::$_instance)) {
+            if(is_null(self::$_instance))
+            {
                 self::$_instance = new self();
             }
 
@@ -74,9 +75,20 @@ if (!class_exists('WooCommerce_Plivo')) {
             require_once $this->plugin_path() . 'includes/wcp-functions.php';
         }
 
+        public function autoload_plivo($class)
+        {
+            if($class == "RestAPI")
+            {
+                require_once $this->plugin_path() . 'library/plivo/plivo.php';
+            }
+        }
+
         public function autoload($class)
         {
-            if(strpos($class, 'WCP_') !== 0) return;
+            if(strpos($class, 'WCP_') !== 0)
+            {
+                return;
+            }
 
             $class_exploded = explode('_', $class);
 
@@ -85,8 +97,10 @@ if (!class_exists('WooCommerce_Plivo')) {
             // first try the directory
             $file = 'includes/' . strtolower($class_exploded[1]) . '/' . $filename;
 
-            if(is_readable($this->plugin_path() . $file)) {
+            if(is_readable($this->plugin_path() . $file))
+            {
                 require_once $this->plugin_path() . $file;
+
                 return;
             }
 
@@ -95,8 +109,10 @@ if (!class_exists('WooCommerce_Plivo')) {
 
             $file = 'includes/' . $filename;
 
-            if(is_readable($this->plugin_path() . $file)) {
+            if(is_readable($this->plugin_path() . $file))
+            {
                 require_once $this->plugin_path() . $file;
+
                 return;
             }
             return;
@@ -114,13 +130,37 @@ if (!class_exists('WooCommerce_Plivo')) {
 
         private function register_scripts()
         {
-            add_action('admin_enqueue_scripts', function() {
-                    wp_enqueue_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
-            });
+            add_action(
+                'admin_enqueue_scripts',
+                function ()
+                {
+                    wp_enqueue_script(
+                        'wcp-admin',
+                        $this->plugin_url() . 'assets/js/admin.js',
+                        array('jquery'),
+                        '0.1',
+                        true
+                    );
+                }
+            );
+        }
+
+        private function init()
+        {
+            add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
+
+            add_action(
+                'init',
+                function ()
+                {
+                    new WCP_Admin_Add_Tab();
+                    new WCP_Admin_Setting_Fields();
+                }
+            );
         }
 
 
     }
 
-    WooCommerce_Plivo::instance();
+    $WCP = WooCommerce_Plivo::instance();
 }
