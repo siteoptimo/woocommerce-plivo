@@ -21,7 +21,7 @@ class WCP_Setting_Fields {
 
     function get_settings() {
 
-        $terms = get_terms('shop_order_status', array('hide_empty' => 0));
+        $terms = get_terms('shop_order_status', array('hide_empty' => 0,'orderby'=>'id'));
         $optionterms= array();
         foreach($terms as $term){
             $optionterms[$term->slug]=$term->name;
