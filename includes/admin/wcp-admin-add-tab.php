@@ -3,7 +3,7 @@
 * @author Pieter Carette <pieter@siteoptimo.com>
 */
 
-class WCP_Add_Tab {
+class WCP_Admin_Add_Tab {
     public function __construct() {
         add_filter( 'woocommerce_settings_tabs_array', array($this,'add_settings_tab'), 50 );
     }

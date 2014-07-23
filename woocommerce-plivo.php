@@ -34,8 +34,6 @@ if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get
     exit;
 }
 
-define('WCP_PATH', dirname(__FILE__));
-
 if (!class_exists('WooCommerce_Plivo')) {
 
     final class WooCommerce_Plivo
@@ -44,11 +42,20 @@ if (!class_exists('WooCommerce_Plivo')) {
 
         function __construct()
         {
+            if ( function_exists( "__autoload" ) ) {
+                spl_autoload_register( "__autoload" );
+            }
+
+            spl_autoload_register(array($this, 'autoload'));
+
             $this->includes();
-            add_action('init', function () {
-                new WCP_Add_Tab();
-                new WCP_Setting_Fields();
-            });
+            add_action(
+                'init',
+                function () {
+                    new WCP_Admin_Add_Tab();
+                    new WCP_Admin_Setting_Fields();
+                }
+            );
 
         }
 
@@ -57,13 +64,51 @@ if (!class_exists('WooCommerce_Plivo')) {
             if (is_null(self::$_instance)) {
                 self::$_instance = new self();
             }
+
             return self::$_instance;
         }
 
         public function includes()
         {
-            include(trailingslashit(WCP_PATH) . 'classes/admin/WCP_Add_Tab.php');
-            include(trailingslashit(WCP_PATH) . 'classes/admin/WCP_Setting_Fields.php');
+            require_once $this->plugin_path() . 'includes/wcp-functions.php';
+        }
+
+        public function autoload($class)
+        {
+            if(strpos($class, 'WCP_') !== 0) return;
+
+            $class_exploded = explode('_', $class);
+
+            $filename = strtolower(implode('-', $class_exploded)) . '.php';
+
+            // first try the directory
+            $file = 'includes/' . strtolower($class_exploded[1]) . '/' . $filename;
+
+            if(is_readable($this->plugin_path() . $file)) {
+                require_once $this->plugin_path() . $file;
+                return;
+            }
+
+            // try without a subdirectory
+            $filename = strtolower(implode('-', $class_exploded)) . '.php';
+
+            $file = 'includes/' . $filename;
+
+            if(is_readable($this->plugin_path() . $file)) {
+                require_once $this->plugin_path() . $file;
+                return;
+            }
+            return;
+        }
+
+        public function plugin_url()
+        {
+            return plugins_url('/', __FILE__);
+        }
+
+        public function plugin_path()
+        {
+            return plugin_dir_path(__FILE__);
         }
 
 

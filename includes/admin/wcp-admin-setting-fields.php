@@ -3,7 +3,7 @@
 * @author Pieter Carette <pieter@siteoptimo.com>
 */
 
-class WCP_Setting_Fields {
+class WCP_Admin_Setting_Fields {
 
 
     public function __construct(){
