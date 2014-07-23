@@ -52,6 +52,8 @@ class WCP_Admin_Setting_Fields {
             'notification_settings_title' => array(
                 'name'     => __( 'Notification settings', 'woocommerce-plivo' ),
                 'type'     => 'title',
+                'desc' => __( 'Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo' ),
+
                 'id'       => 'wcp_notification_settings_section_title'
             ),
             'notification_on' => array(
