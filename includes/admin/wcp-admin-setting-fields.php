@@ -99,5 +99,4 @@ class WCP_Admin_Setting_Fields {
         );
         return apply_filters( 'woocommerce_sms_settings', $settings );
     }
-
 } 

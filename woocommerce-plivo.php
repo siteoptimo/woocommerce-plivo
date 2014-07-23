@@ -114,7 +114,9 @@ if (!class_exists('WooCommerce_Plivo')) {
 
         private function register_scripts()
         {
-            wp_register_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
+            add_action('admin_enqueue_scripts', function() {
+                    wp_enqueue_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
+            });
         }
 
 
