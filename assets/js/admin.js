@@ -24,24 +24,23 @@
                 dataType: 'JSON'
 
             });
-        })
-    }
-    $('select option').each(function () {
-        if (!$(this).is(':selected')) {
-            var slug = $(this).val();
-            $('textarea#wcp_notification_message_' + slug).closest('tr').hide();
-        }
-    });
-
-    $('select#wcp_notification').change(function () {
+        });
         $('select option').each(function () {
-            var slug = $(this).val();
-            if ($(this).is(':selected')) {
-                $('textarea#wcp_notification_message_' + slug).closest('tr').show();
-            } else {
+            if (!$(this).is(':selected')) {
+                var slug = $(this).val();
                 $('textarea#wcp_notification_message_' + slug).closest('tr').hide();
             }
         });
 
-    });
+        $('select#wcp_notification').change(function () {
+            $('select option').each(function () {
+                var slug = $(this).val();
+                if ($(this).is(':selected')) {
+                    $('textarea#wcp_notification_message_' + slug).closest('tr').show();
+                } else {
+                    $('textarea#wcp_notification_message_' + slug).closest('tr').hide();
+                }
+            });
+        });
+    }
 })(jQuery);
