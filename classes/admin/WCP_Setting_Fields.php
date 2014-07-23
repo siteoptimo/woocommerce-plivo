@@ -7,7 +7,7 @@ class WCP_Setting_Fields {
 
 
     public function __construct(){
-        add_action( 'woocommerce_settings_tabs_woocommerce_sms_settings', array($this, 'settings_tab') );
+        add_action( 'woocommerce_settings_woocommerce_sms_settings', array($this, 'settings_tab') );
         add_action( 'woocommerce_update_options_woocommerce_sms_settings', array($this, 'update_settings') );
 
     }
