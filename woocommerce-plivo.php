@@ -45,8 +45,11 @@ if (!class_exists('WooCommerce_Plivo')) {
         function __construct()
         {
             $this->includes();
-            new WCP_Add_Tab();
-            new WCP_Setting_Fields();
+            add_action('init', function () {
+                new WCP_Add_Tab();
+                new WCP_Setting_Fields();
+            });
+
         }
 
         public static function instance()
@@ -57,14 +60,14 @@ if (!class_exists('WooCommerce_Plivo')) {
             return self::$_instance;
         }
 
-        public function includes(){
-            include(trailingslashit(WCP_PATH).'classes/admin/WCP_Add_Tab.php');
-            include(trailingslashit(WCP_PATH).'classes/admin/WCP_Setting_Fields.php');
-
+        public function includes()
+        {
+            include(trailingslashit(WCP_PATH) . 'classes/admin/WCP_Add_Tab.php');
+            include(trailingslashit(WCP_PATH) . 'classes/admin/WCP_Setting_Fields.php');
         }
 
 
-
     }
+
     WooCommerce_Plivo::instance();
 }
