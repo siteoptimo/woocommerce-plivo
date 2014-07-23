@@ -49,6 +49,7 @@ if (!class_exists('WooCommerce_Plivo')) {
             spl_autoload_register(array($this, 'autoload'));
 
             $this->includes();
+            $this->register_scripts();
             add_action(
                 'init',
                 function () {
@@ -109,6 +110,11 @@ if (!class_exists('WooCommerce_Plivo')) {
         public function plugin_path()
         {
             return plugin_dir_path(__FILE__);
+        }
+
+        private function register_scripts()
+        {
+            wp_register_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
         }
 
 
