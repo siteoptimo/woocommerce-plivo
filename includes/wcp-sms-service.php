@@ -49,13 +49,10 @@ class WCP_SMS_Service
     {
         $this->auth_id = get_option('wcp_auth_id');
         $this->auth_token = get_option('wcp_auth_password');
-
-        var_dump($this->auth_token, $this->auth_id);
     }
 
     public function sendText($to, $message) {
 
-        // TODO phone number validation
         $params = array(
             'src' => self::$from,
             'dst' => $to,
@@ -63,10 +60,8 @@ class WCP_SMS_Service
             'type' => 'sms'
         );
 
-        var_dump($params);
-
         $response = $this->plivo->send_message($params);
 
-        var_dump($response);
+        return $response["status"] == '202';
     }
 }

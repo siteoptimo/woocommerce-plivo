@@ -147,6 +147,17 @@ if(!class_exists('WooCommerce_Plivo'))
 
         private function init()
         {
+
+            if(is_admin()) {
+                $this->admin_init();
+            }
+
+
+
+        }
+
+        private function admin_init()
+        {
             add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
 
             add_action(
@@ -157,6 +168,17 @@ if(!class_exists('WooCommerce_Plivo'))
                     new WCP_Admin_Setting_Fields();
                 }
             );
+
+            add_filter('woocommerce_new_order_note_data', array('WCP_Admin_Order_Note', 'order_note_data'));
+
+
+            add_action('current_screen', function() {
+                    $current_screen = get_current_screen()->id;
+
+                    if($current_screen == 'shop_order') {
+                        new WCP_Admin_Order_Note();
+                    }
+            });
         }
 
 
