@@ -197,6 +197,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                     {
                         new WCP_Admin_Add_Tab();
                         new WCP_Admin_Add_Settings_Link();
+                        new WCP_Admin_Nag_Window();
                         new WCP_Admin_Setting_Fields();
                     }
                 );
