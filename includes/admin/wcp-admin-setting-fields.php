@@ -47,7 +47,7 @@ class WCP_Admin_Setting_Fields {
                 'id' => 'wcp_notification_message_' . $term->slug,
                 'css' => 'width:100%; height: 65px;',
                 'class' => 'optional_textarea',
-                'default' => '{shop name} status update: Order {order number} is now ' . $term->slug . '.',
+                'default' => sprintf(__('{shop_name} status update: Order {order_id} is now %s', 'woocommerce-plivo'), $term->slug),
             );
         }
         return $textareas;

@@ -25,4 +25,19 @@ class WCP_Tools {
         $phoneNumber = trim($phoneNumber);
         return (isset($phoneNumber) && !empty($phoneNumber));
     }
+
+    public static function getPhoneNumberByOrder($orderID) {
+        $billing_phone = get_post_meta($orderID, '_billing_phone', true);
+        $customer = get_post_meta($orderID, '_customer_user', true);
+        $customer_phone = get_user_meta($customer, 'billing_phone', true);
+        $phone = (empty($billing_phone)) ? $customer_phone : $billing_phone;
+
+        return self::cleanPhoneNumber($phone);
+
+    }
+
+    public static function getTextMessageByOrderStatus($orderStatus)
+    {
+        return get_option('wcp_notification_message_' . $orderStatus);
+    }
 }
