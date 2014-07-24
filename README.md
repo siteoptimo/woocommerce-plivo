@@ -1,12 +1,16 @@
 WooCommerce Plivo Plugin
 ========================
-
-Welcome! This plugin is still in its early stages of development. It is brought to you by the brave coders of [SiteOptimo](http://www.siteoptimo.com).
-
-About
------
-
 The WooCommerce Plivo plugin enables the use of the popular platform for building voice and SMS enabled applications, [Plivo](http://www.plivo.com). We aim to integrate most of the features the Plivo API has to offer, but for now, we'll stick to implementing SMS order notifications.
+
+
+About the authors
+------------------
+This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com).
+
+Requirements
+------------
+
+php-openssl, php-curl, pear package HTTP_Request2
 
 Installation
 ------------
