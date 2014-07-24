@@ -2,6 +2,7 @@
 /**
 * @author Pieter Carette <pieter@siteoptimo.com>
 */
+if(!defined('ABSPATH')) exit;
 
 class WCP_Admin_Add_Tab {
     public function __construct() {

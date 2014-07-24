@@ -2,6 +2,7 @@
 /**
  * @author Koen Van den Wijngaert <koen@siteoptimo.com>
  */
+if(!defined('ABSPATH')) exit;
 
 class WCP_Admin_Add_Settings_Link {
 
