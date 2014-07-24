@@ -186,36 +186,43 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 
             private function admin_hooks()
             {
-                add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
 
                 add_action('init', function ()
                 {
                     new WCP_Admin_Add_Tab();
-                    new WCP_Admin_Add_Settings_Link();
                     new WCP_Admin_Nag_Window();
+                    new WCP_Admin_Add_Settings_Link();
                     new WCP_Admin_Setting_Fields();
                 });
 
-                add_filter('woocommerce_new_order_note_data', array('WCP_Admin_Order_Note', 'order_note_data'));
 
-
-                add_action('current_screen', function ()
+                if(is_wcp_ready())
                 {
-                    $current_screen = get_current_screen()->id;
+                    add_filter('woocommerce_new_order_note_data', array('WCP_Admin_Order_Note', 'order_note_data'));
 
-                    if($current_screen == 'shop_order')
+                    add_action('current_screen', function ()
                     {
-                        new WCP_Admin_Order_Note();
-                    }
-                });
+                        $current_screen = get_current_screen()->id;
+
+                        if($current_screen == 'shop_order')
+                        {
+                            new WCP_Admin_Order_Note();
+                        }
+                    });
+
+                    add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
+                }
             }
 
             private function hooks()
             {
-                add_action('init', function ()
+                if(is_wcp_ready())
                 {
-                    new WCP_Status_Hooks();
-                });
+                    add_action('init', function ()
+                    {
+                        new WCP_Status_Hooks();
+                    });
+                }
             }
 
 

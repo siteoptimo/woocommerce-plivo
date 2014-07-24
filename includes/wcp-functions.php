@@ -4,19 +4,8 @@
  */
 if(!defined('ABSPATH')) exit;
 
-class WCP_Admin_Add_Settings_Link {
-
-    public function __construct() {
-        add_filter('plugin_action_links_'.WCP_BASENAME, array($this,'wcp_settings_link') );
-    }
-    public function wcp_settings_link($links) {
-        $settings_link = '<a href="admin.php?page=wc-settings&tab=woocommerce_sms_settings">Settings</a>';
-        array_unshift($links, $settings_link);
-        return $links;
-    }
-
+function is_wcp_ready() {
+    $wcp_auth_id = get_option('wcp_auth_id');
+    $wp_auth_password = get_option('wcp_auth_password');
+    return !empty($wcp_auth_id) && !empty($wp_auth_password);
 }
-
-
-
-
