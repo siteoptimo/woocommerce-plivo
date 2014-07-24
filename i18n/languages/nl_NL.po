@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress WooCommerce Plivo v1.0.0\n"
 "Report-Msgid-Bugs-To: Pieter Carette <pieter@siteoptimo.com>\n"
-"POT-Creation-Date: 2014-07-23 16:33+0100\n"
+"POT-Creation-Date: 2014-07-24 10:37+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pieter Carette <pieter@siteoptimo.com>\n"
 "Language-Team: SiteOptimo <team@siteoptimo.com>\n"
@@ -23,19 +23,31 @@ msgstr ""
 "X-Generator: Poedit 1.6.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/wcp-admin-add-tab.php:12
+#: includes/admin/wcp-admin-add-tab.php:13
 msgid "SMS"
 msgstr "SMS"
 
-#: includes/admin/wcp-admin-setting-fields.php:44
+#: includes/admin/wcp-admin-nag-window.php:27
+msgid "The WooCommerce Plivo integration plugin is not yet configured."
+msgstr "De WooCommerce Plivo pagina is nog niet geconfigureerd."
+
+#: includes/admin/wcp-admin-nag-window.php:27
+msgid "Take me to the Plivo settings page!"
+msgstr "Naar de Plivo instellingen!"
+
+#: includes/admin/wcp-admin-nag-window.php:27
+msgid "I know, hide this message"
+msgstr "Verberg dit bericht"
+
+#: includes/admin/wcp-admin-setting-fields.php:45
 msgid "Auto message for "
 msgstr "Stuur automatisch een bericht bij "
 
-#: includes/admin/wcp-admin-setting-fields.php:59
+#: includes/admin/wcp-admin-setting-fields.php:60
 msgid "Plivo Settings"
 msgstr "Plivo Instellingen"
 
-#: includes/admin/wcp-admin-setting-fields.php:61
+#: includes/admin/wcp-admin-setting-fields.php:62
 msgid ""
 "Find your Plivo Auth ID and Auth Token on your <a href=\"https://manage."
 "plivo.com/dashboard/\" target=\"_blank\">Plivo Dashboard</a> page."
@@ -43,19 +55,24 @@ msgstr ""
 "Haal je Plivo Auth ID en Auth Token bij de <a href=\"https://manage.plivo."
 "com/dashboard/\" target=\"_blank\">Plivo Dashboard</a> pagina."
 
-#: includes/admin/wcp-admin-setting-fields.php:66
+#: includes/admin/wcp-admin-setting-fields.php:67
 msgid "Auth ID"
 msgstr "Auth ID"
 
-#: includes/admin/wcp-admin-setting-fields.php:72
+#: includes/admin/wcp-admin-setting-fields.php:70
+#: includes/admin/wcp-admin-setting-fields.php:77
+msgid "Required. Needed to make the magic happen."
+msgstr "Verplicht. Nodig om de boel te laten werken."
+
+#: includes/admin/wcp-admin-setting-fields.php:74
 msgid "Auth Token"
 msgstr "Auth Token"
 
-#: includes/admin/wcp-admin-setting-fields.php:81
+#: includes/admin/wcp-admin-setting-fields.php:84
 msgid "Notification settings and messages"
 msgstr "Notificatie instellingen en berichten"
 
-#: includes/admin/wcp-admin-setting-fields.php:83
+#: includes/admin/wcp-admin-setting-fields.php:86
 msgid ""
 "Choose when to send a status notification message and modify the content of "
 "the messages."
@@ -63,22 +80,30 @@ msgstr ""
 "Kies welke statusberichten verstuurd moeten worden en bepaal zelf de inhoud "
 "van de berichten."
 
-#: includes/admin/wcp-admin-setting-fields.php:87
+#: includes/admin/wcp-admin-setting-fields.php:90
 msgid "Auto send notification on:"
 msgstr "Stuur notificaties bij:"
 
-#: includes/admin/wcp-admin-setting-fields.php:101
+#: includes/admin/wcp-admin-setting-fields.php:104
 msgid "Send a test SMS"
 msgstr "Stuur een test SMS"
 
-#: includes/admin/wcp-admin-setting-fields.php:106
+#: includes/admin/wcp-admin-setting-fields.php:109
 msgid "Phone Number"
 msgstr "Telefoonnummer"
 
 #: includes/admin/wcp-admin-setting-fields.php:112
+msgid "Phone number to send the test message to."
+msgstr "Telefoonnummer waar het testbericht naar verstuurd mag worden."
+
+#: includes/admin/wcp-admin-setting-fields.php:116
 msgid "Message"
 msgstr "Bericht"
 
-#: includes/admin/wcp-admin-setting-fields.php:122
+#: includes/admin/wcp-admin-setting-fields.php:120
+msgid "Test message to send to your mobile."
+msgstr "Testbericht die verstuurd mag worden."
+
+#: includes/admin/wcp-admin-setting-fields.php:128
 msgid "<a href=\"\" class=\"button\">Send</a>"
 msgstr "<a href=\"\" class=\"button\">Verstuur</a>"
