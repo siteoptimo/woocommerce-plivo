@@ -16,8 +16,6 @@ class WCP_Admin_Nag_Window
     {
         global $current_user;
         $user_id = $current_user->ID;
-        var_dump(get_user_meta($user_id, 'wcp_ignored_notice'));
-
         if (!get_user_meta($user_id, 'wcp_ignored_notice') && !get_option('wcp_auth_id') && !get_option('wcp_auth_password')) {
 
             if (current_user_can('install_plugins') && !(isset($_GET['tab']) && $_GET['tab'] == 'woocommerce_sms_settings')) {

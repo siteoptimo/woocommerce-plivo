@@ -105,14 +105,17 @@ class WCP_Admin_Setting_Fields {
         $settings['demo_phone_number'] = array(
             'name' => __('Phone Number', 'woocommerce-plivo'),
             'type' => 'text',
-            'id' => 'wcp_demo_phone_number'
+            'id' => 'wcp_demo_phone_number',
+            'desc_tip'	=> __( 'Phone number to send the test message to.', 'woocommerce-plivo' )
         );
 
         $settings['demo_message'] = array(
             'name' => __('Message', 'woocommerce-plivo'),
             'type' => 'textarea',
             'id' => 'wcp_demo_message',
-            'default' => 'Test message'
+            'default' => 'Test message',
+            'desc_tip'	=> __( 'Test message to send to your mobile.', 'woocommerce-plivo' ),
+
         );
         $settings['demo_send_button'] = array(
             'name' => '',
