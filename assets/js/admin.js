@@ -19,8 +19,11 @@
                 },
                 success: function (data) {
                     console.log(data);
-                    $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/ok.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:green;font-weight:bold">OK</span>');
-
+                    if (data) {
+                        $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/ok.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:green;font-weight:bold">Sent</span>');
+                    } else {
+                        $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/fail.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:red;font-weight:bold">Error</span>');
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
@@ -48,6 +51,6 @@
             });
         });
 
-        $("label[for='wcp_auth_id'],label[for='wcp_auth_password']").append('<sup style="color:red">*</sup>');
+        $("label[for='wcp_auth_id'],label[for='wcp_auth_password'],label[for='wcp_from_number']").append('<sup style="color:red">*</sup>');
     }
 })(jQuery);

@@ -59,7 +59,7 @@ class WCP_Admin_Setting_Fields {
         $settings['plivo_settings_title'] = array(
             'name' => __('Plivo Settings', 'woocommerce-plivo'),
             'type' => 'title',
-            'desc' => __('Find your Plivo Auth ID and Auth Token on your <a href="https://manage.plivo.com/dashboard/" target="_blank">Plivo Dashboard</a> page.', 'woocommerce-plivo'),
+            'desc' => __('Find your Plivo Auth ID and Auth Token on your <a href="https://manage.plivo.com/dashboard/" target="_blank">Plivo Dashboard</a> page. Get your number at <a href="https://manage.plivo.com/number/" target="_blank">the Plivo numbers tab</a>.', 'woocommerce-plivo'),
             'id' => 'wcp_plivo_settings_section_title'
         );
 
@@ -74,6 +74,12 @@ class WCP_Admin_Setting_Fields {
             'name' => __('Auth Token', 'woocommerce-plivo'),
             'type' => 'password',
             'id' => 'wcp_auth_password',
+            'desc_tip'	=> __( 'Required. Needed to make the magic happen.', 'woocommerce-plivo' )
+        );
+        $settings['from_number'] = array(
+            'name' => __('From number', 'woocommerce-plivo'),
+            'type' => 'text',
+            'id' => 'wcp_from_number',
             'desc_tip'	=> __( 'Required. Needed to make the magic happen.', 'woocommerce-plivo' )
         );
         $settings['section_end'] = array(
