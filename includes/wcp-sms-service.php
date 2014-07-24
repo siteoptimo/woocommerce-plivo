@@ -24,12 +24,18 @@ class WCP_SMS_Service
     {
         $this->populateAuthenticationInformation();
 
-        if(empty($this->auth_token))
+        if(empty($this->auth_token) || empty($this->auth_id))
         {
-            throw new Exception('No plivo credentials detected.');
+            throw new Exception('Can\'t start SMS Service. No plivo credentials detected.');
         }
 
-        $this->plivo = new RestAPI($this->auth_id, $this->auth_token);
+        try
+        {
+            $this->plivo = new RestAPI($this->auth_id, $this->auth_token);
+        } catch(Exception $e)
+        {
+            throw new Exception('Can\'t start SMS Service. The plivo credentials were faulty.');
+        }
 
     }
 
@@ -52,17 +58,13 @@ class WCP_SMS_Service
         $this->auth_token = get_option('wcp_auth_password');
     }
 
-    public function sendText($to, $message) {
+    public function sendText($to, $message)
+    {
 
-        $params = array(
-            'src' => self::$from,
-            'dst' => $to,
-            'text' => $message,
-            'type' => 'sms'
-        );
+        $params = array('src' => self::$from, 'dst' => $to, 'text' => $message, 'type' => 'sms');
 
         $response = $this->plivo->send_message($params);
 
-        return $response["status"] == '202';
+        return in_array($response["status"], array('200', '201', '202', '203', '204'));
     }
 }
