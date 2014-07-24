@@ -39,10 +39,11 @@ class WCP_Admin_Order_Note
 
             $smsService->sendText($phone, $message);
 
-            $note_data['comment_content'] = 'Sent "' . $message . '" to ' . $phone . '.';
+            $note_data['comment_content'] = sprintf(__('Sent "%s" to %s.', 'woocommerce-plivo'), $message, $phone);
         } else
         {
             $note_data['comment_content'] = 'Could not send text "' . $message . '", the phone number was missing or invalid.';
+            $note_data['comment_content'] = sprintf(__('Could not send text "%s", the phone number was missing or invalid.', 'woocommerce-plivo'), $message);
         }
 
         return $note_data;
