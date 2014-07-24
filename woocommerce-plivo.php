@@ -162,9 +162,13 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
             private function register_scripts()
             {
                 add_action('admin_enqueue_scripts', function ()
-                    {
-                        wp_enqueue_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
-                    });
+                {
+                    wp_register_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
+
+                    wp_localize_script('wcp-admin', 'WCP', array('plugin_url' => $this->plugin_url()));
+
+                    wp_enqueue_script('wcp-admin');
+                });
             }
 
             private function init()
@@ -185,34 +189,33 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
 
                 add_action('init', function ()
-                    {
-                        new WCP_Admin_Add_Tab();
-                        new WCP_Admin_Add_Settings_Link();
-                        new WCP_Admin_Nag_Window();
-                        new WCP_Admin_Setting_Fields();
-                    });
+                {
+                    new WCP_Admin_Add_Tab();
+                    new WCP_Admin_Add_Settings_Link();
+                    new WCP_Admin_Nag_Window();
+                    new WCP_Admin_Setting_Fields();
+                });
 
                 add_filter('woocommerce_new_order_note_data', array('WCP_Admin_Order_Note', 'order_note_data'));
 
 
                 add_action('current_screen', function ()
-                    {
-                        $current_screen = get_current_screen()->id;
+                {
+                    $current_screen = get_current_screen()->id;
 
-                        if($current_screen == 'shop_order')
-                        {
-                            new WCP_Admin_Order_Note();
-                        }
-                    });
+                    if($current_screen == 'shop_order')
+                    {
+                        new WCP_Admin_Order_Note();
+                    }
+                });
             }
 
             private function hooks()
             {
-                add_action('init', function()
+                add_action('init', function ()
                 {
-                   new WCP_Status_Hooks();
+                    new WCP_Status_Hooks();
                 });
-
             }
 
 

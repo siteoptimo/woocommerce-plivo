@@ -66,13 +66,15 @@ class WCP_Admin_Setting_Fields {
         $settings['auth_id'] = array(
             'name' => __('Auth ID', 'woocommerce-plivo'),
             'type' => 'text',
-            'id' => 'wcp_auth_id'
+            'id' => 'wcp_auth_id',
+            'desc_tip'	=> __( 'Required. Needed to make the magic happen.', 'woocommerce-plivo' )
         );
 
         $settings['auth_token'] = array(
             'name' => __('Auth Token', 'woocommerce-plivo'),
             'type' => 'password',
-            'id' => 'wcp_auth_password'
+            'id' => 'wcp_auth_password',
+            'desc_tip'	=> __( 'Required. Needed to make the magic happen.', 'woocommerce-plivo' )
         );
         $settings['section_end'] = array(
             'type' => 'sectionend',

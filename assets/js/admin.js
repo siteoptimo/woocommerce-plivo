@@ -7,6 +7,8 @@
         $submitButton.on('click', function (e) {
             e.preventDefault();
 
+            $('a.button').after('<span class="loadbutton" style="position:relative;top:0.2em;"><img src="' + WCP.plugin_url + 'assets/images/wpspin_light.gif" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;">Sending...</span>');
+
             $.ajax({
                 url: ajaxurl,
                 type: 'POST',
@@ -17,9 +19,12 @@
                 },
                 success: function (data) {
                     console.log(data);
+                    $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/ok.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:green;font-weight:bold">OK</span>');
+
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
+                    $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/fail.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:red;font-weight:bold">Error</span>');
                 },
                 dataType: 'JSON'
 
@@ -42,5 +47,7 @@
                 }
             });
         });
+
+        $("label[for='wcp_auth_id'],label[for='wcp_auth_password']").append('<sup style="color:red">*</sup>');
     }
 })(jQuery);
