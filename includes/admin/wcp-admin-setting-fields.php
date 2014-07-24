@@ -125,7 +125,7 @@ class WCP_Admin_Setting_Fields {
             'type' => 'text',
             'class' => 'hidden',
             'id' => 'wcp_send_button',
-            'desc' => __('<a href="" class="button">Send</a>', 'woocommerce-plivo'),
+            'desc' => '<a href="" class="button">'.__('Send', 'woocommerce-plivo').'</a>',
         );
 
         $settings['demo_section_end'] = array(
