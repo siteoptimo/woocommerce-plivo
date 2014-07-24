@@ -23,6 +23,11 @@ Current features:
 = Requirements =
 To make use of the Plivo API, this plugin requires php-openssl, php-curl, [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2) to be installed.
 
+=About the authors & support =
+This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com).
+Consider this plugin a good written and functioning beta. We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
+
+
 == Installation ==
 
 1. Upload the `woocommerce-plivo` folder to the `/wp-content/plugins/` directory
@@ -48,4 +53,4 @@ You're free to make feature suggestions, but if it's custom work you want, conta
 
 2. Define the messages you want to have sent automaticly and give start customizing the messages.
 
-3. Your order notifications are now sent automaticly. You can send additional messages too. The sky is the limit.
+3. Your order notification changes are now sent automaticly. You can send additional messages too. The sky is the limit.
