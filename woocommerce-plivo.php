@@ -179,6 +179,7 @@ if(!class_exists('WooCommerce_Plivo'))
                 {
                     new WCP_Admin_Add_Tab();
                     new WCP_Admin_Add_Settings_Link();
+                    new WCP_Admin_Nag_Window();
                     new WCP_Admin_Setting_Fields();
                 }
             );
