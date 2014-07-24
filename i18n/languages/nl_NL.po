@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress WooCommerce Plivo v1.0.0\n"
 "Report-Msgid-Bugs-To: Pieter Carette <pieter@siteoptimo.com>\n"
-"POT-Creation-Date: 2014-07-24 13:58+0100\n"
+"POT-Creation-Date: 2014-07-24 16:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pieter Carette <pieter@siteoptimo.com>\n"
 "Language-Team: SiteOptimo <team@siteoptimo.com>\n"
@@ -23,47 +23,56 @@ msgstr ""
 "X-Generator: Poedit 1.6.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/wcp-admin-add-tab.php:13
+#: includes/admin/wcp-admin-add-tab.php:31
 msgid "SMS"
 msgstr "SMS"
 
-#: includes/admin/wcp-admin-nag-window.php:26
+#: includes/admin/wcp-admin-nag-window.php:41
 msgid "The WooCommerce Plivo integration plugin is not yet configured."
 msgstr "De WooCommerce Plivo pagina is nog niet geconfigureerd."
 
-#: includes/admin/wcp-admin-nag-window.php:26
+#: includes/admin/wcp-admin-nag-window.php:41
 msgid "Take me to the Plivo settings page!"
 msgstr "Naar de Plivo instellingen!"
 
-#: includes/admin/wcp-admin-nag-window.php:26
+#: includes/admin/wcp-admin-nag-window.php:41
 msgid "I know, hide this message"
 msgstr "Verberg dit bericht"
 
-#: includes/admin/wcp-admin-order-note.php:42 includes/wcp-status-hooks.php:45
+#: includes/admin/wcp-admin-order-note.php:30
+msgid "Send as SMS?"
+msgstr "Stuur een test SMS?"
+
+#: includes/admin/wcp-admin-order-note.php:64 includes/wcp-status-hook.php:70
 #, php-format
 msgid "Sent \"%s\" to %s."
 msgstr "\"%s\" verzonden naar %s."
 
-#: includes/admin/wcp-admin-order-note.php:46
+#: includes/admin/wcp-admin-order-note.php:67
+#, php-format
+msgid "Could not send text \"%s\", the SMS service returned an exception."
+msgstr "Kon bericht \"%s\" niet versturen, De SMS service gaf een fout."
+
+#: includes/admin/wcp-admin-order-note.php:72
 #, php-format
 msgid "Could not send text \"%s\", the phone number was missing or invalid."
 msgstr ""
 "Kon \"%s\" niet versturen, het telefoonnummer was niet aanwezig of fout."
 
-#: includes/admin/wcp-admin-setting-fields.php:45
+#: includes/admin/wcp-admin-setting-fields.php:80
 msgid "Auto message for "
 msgstr "Stuur automatisch een bericht bij "
 
-#: includes/admin/wcp-admin-setting-fields.php:50
+#: includes/admin/wcp-admin-setting-fields.php:80
 #, php-format
 msgid "{shop_name} status update: Order {order_id} is now %s"
 msgstr "{shop_name} status update: Bestelling {order_id} is nu %s"
 
-#: includes/admin/wcp-admin-setting-fields.php:60
+#: includes/admin/wcp-admin-setting-fields.php:94
 msgid "Plivo Settings"
 msgstr "Plivo Instellingen"
 
-#: includes/admin/wcp-admin-setting-fields.php:62
+#: includes/admin/wcp-admin-setting-fields.php:94
 msgid ""
 "Find your Plivo Auth ID and Auth Token on your <a href=\"https://manage."
 "plivo.com/dashboard/\" target=\"_blank\">Plivo Dashboard</a> page. Get your "
@@ -75,29 +84,29 @@ msgstr ""
 "vind je terug op de <a href=\"https://manage.plivo.com/number/\" target="
 "\"_blank\">de Plivo numbers tab</a>."
 
-#: includes/admin/wcp-admin-setting-fields.php:67
+#: includes/admin/wcp-admin-setting-fields.php:96
 msgid "Auth ID"
 msgstr "Auth ID"
 
-#: includes/admin/wcp-admin-setting-fields.php:70
-#: includes/admin/wcp-admin-setting-fields.php:77
-#: includes/admin/wcp-admin-setting-fields.php:83
+#: includes/admin/wcp-admin-setting-fields.php:96
+#: includes/admin/wcp-admin-setting-fields.php:98
+#: includes/admin/wcp-admin-setting-fields.php:99
 msgid "Required. Needed to make the magic happen."
 msgstr "Verplicht. Nodig om de boel te laten werken."
 
-#: includes/admin/wcp-admin-setting-fields.php:74
+#: includes/admin/wcp-admin-setting-fields.php:98
 msgid "Auth Token"
 msgstr "Auth Token"
 
-#: includes/admin/wcp-admin-setting-fields.php:80
+#: includes/admin/wcp-admin-setting-fields.php:99
 msgid "From number"
 msgstr "Afzender telefoonnummer"
 
-#: includes/admin/wcp-admin-setting-fields.php:90
+#: includes/admin/wcp-admin-setting-fields.php:101
 msgid "Notification settings and messages"
 msgstr "Notificatie instellingen en berichten"
 
-#: includes/admin/wcp-admin-setting-fields.php:92
+#: includes/admin/wcp-admin-setting-fields.php:101
 msgid ""
 "Choose when to send a status notification message and modify the content of "
 "the messages."
@@ -105,40 +114,40 @@ msgstr ""
 "Kies welke statusberichten verstuurd moeten worden en bepaal zelf de inhoud "
 "van de berichten."
 
-#: includes/admin/wcp-admin-setting-fields.php:96
+#: includes/admin/wcp-admin-setting-fields.php:102
 msgid "Auto send notification on:"
 msgstr "Stuur notificaties bij:"
 
-#: includes/admin/wcp-admin-setting-fields.php:110
+#: includes/admin/wcp-admin-setting-fields.php:107
 msgid "Send a test SMS"
 msgstr "Stuur een test SMS"
 
-#: includes/admin/wcp-admin-setting-fields.php:115
+#: includes/admin/wcp-admin-setting-fields.php:108
 msgid "Phone Number"
 msgstr "Telefoonnummer"
 
-#: includes/admin/wcp-admin-setting-fields.php:118
+#: includes/admin/wcp-admin-setting-fields.php:108
 msgid "Phone number to send the test message to."
 msgstr "Telefoonnummer waar het testbericht naar verstuurd mag worden."
 
-#: includes/admin/wcp-admin-setting-fields.php:122
+#: includes/admin/wcp-admin-setting-fields.php:110
 msgid "Message"
 msgstr "Bericht"
 
-#: includes/admin/wcp-admin-setting-fields.php:126
+#: includes/admin/wcp-admin-setting-fields.php:110
 msgid "Test message to send to your mobile."
 msgstr "Testbericht die verstuurd mag worden."
 
-#: includes/admin/wcp-admin-setting-fields.php:134
+#: includes/admin/wcp-admin-setting-fields.php:113
 msgid "Send"
 msgstr "Verstuur"
 
-#: includes/wcp-status-hooks.php:48
+#: includes/wcp-status-hook.php:73
 #, php-format
 msgid "Could not send \"%s\" to %s."
 msgstr "Kon \"%s\" niet verzenden naar %s."
 
-#: includes/wcp-status-hooks.php:55
+#: includes/wcp-status-hook.php:83
 msgid ""
 "Could not text status update to customer. The SMS service returned an "
 "exception."
@@ -146,7 +155,7 @@ msgstr ""
 "De status update kon niet verstuurd worden naar de klant. De SMS service gaf "
 "een fout."
 
-#: includes/wcp-status-hooks.php:59
+#: includes/wcp-status-hook.php:87
 msgid ""
 "Could not text status update to customer. Either the phone number or the "
 "status message were invalid."
