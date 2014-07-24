@@ -16,7 +16,9 @@ class WCP_Admin_Nag_Window
     {
         global $current_user;
         $user_id = $current_user->ID;
-        if (!get_user_meta($user_id, 'wcp_ignored_notice') && !get_option('wcp_auth_id') && !get_option('wcp_auth_password')) {
+        $wcp_auth_id = get_option('wcp_auth_id');
+        $wp_auth_password = get_option('wcp_auth_password');
+        if (!get_user_meta($user_id, 'wcp_ignored_notice', true) && (empty($wcp_auth_id) || empty($wp_auth_password))) {
 
             if (current_user_can('install_plugins') && !(isset($_GET['tab']) && $_GET['tab'] == 'woocommerce_sms_settings')) {
                 echo '<div class="updated"><p>' . __('The WooCommerce Plivo integration plugin is not yet configured.', 'woocommerce-plivo') . '<br><a href="admin.php?page=wc-settings&tab=woocommerce_sms_settings">' . __('Take me to the Plivo settings page!', 'woocommerce-plivo') . '</a> | <a href="?wcp_nag_ignore=0">'.__('I know, hide this message','woocommerce-plivo').'</a></p></div>';
@@ -31,7 +33,7 @@ class WCP_Admin_Nag_Window
         $user_id = $current_user->ID;
         /* If user clicks to ignore the notice, add that to their user meta */
         if (isset($_GET['wcp_nag_ignore']) && '0' == $_GET['wcp_nag_ignore']) {
-            add_user_meta($user_id, 'wcp_ignored_notice', 'true', true);
+            add_user_meta($user_id, 'wcp_ignored_notice', true, true);
         }
     }
 }
