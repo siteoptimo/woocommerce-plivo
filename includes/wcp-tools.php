@@ -35,4 +35,9 @@ class WCP_Tools {
         return self::cleanPhoneNumber($phone);
 
     }
+
+    public static function getTextMessageByOrderStatus($orderStatus)
+    {
+        return get_option('wcp_notification_message_' . $orderStatus);
+    }
 }

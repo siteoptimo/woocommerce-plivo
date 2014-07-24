@@ -47,7 +47,7 @@ class WCP_Admin_Setting_Fields {
                 'id' => 'wcp_notification_message_' . $term->slug,
                 'css' => 'width:100%; height: 65px;',
                 'class' => 'optional_textarea',
-                'default' => '{shop name} status update: Order {order number} is now ' . $term->slug . '.',
+                'default' => sprintf(__('{shop_name} status update: Order {order_id} is now %s', 'woocommerce-plivo'), $term->slug),
             );
         }
         return $textareas;
@@ -123,7 +123,7 @@ class WCP_Admin_Setting_Fields {
             'type' => 'text',
             'class' => 'hidden',
             'id' => 'wcp_send_button',
-            'desc' => __('<a href="" class="button">Send</a>', 'woocommerce-plivo'),
+            'desc' => '<a href="" class="button">'.__('Send', 'woocommerce-plivo').'</a>',
         );
 
         $settings['demo_section_end'] = array(
