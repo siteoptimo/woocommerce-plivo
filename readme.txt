@@ -1,12 +1,12 @@
-=== Plivo SMS notifications ===
+=== WooCommerce Plivo SMS notifications ===
 Contributors: siteoptimo
 Donate link: http://www.siteoptimo.com/
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Tags: plivo, sms, notifications, support, update, cart, woocommerce, status, shipping
+Tags: woocommerce, plivo, sms, notifications, support, update, cart, status, shipping, notification
 Requires at least: 3.6
 Tested up to: 3.9.1
-Stable tag: 1.5.4.2
+Stable tag: 1.0
 
 Allow your WooCommerce website to send SMS notifications to your customers.
 
@@ -22,6 +22,11 @@ Current features:
 
 = Requirements =
 To make use of the Plivo API, this plugin requires php-openssl, php-curl, [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2) to be installed.
+
+=About the authors & support =
+This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com).
+Consider this plugin a good written and functioning beta. We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
+
 
 == Installation ==
 
@@ -41,3 +46,11 @@ We needed something like this for one of our clients. Now we're giving it back t
 
 -I want the plugin to do X. Can you change it?
 You're free to make feature suggestions, but if it's custom work you want, contact us.
+
+== Screenshots ==
+
+1. Save your Plivo settings in the new WooCommerce SMS tab.
+
+2. Define the messages you want to have sent automaticly and give start customizing the messages.
+
+3. Your order notification changes are now sent automaticly. You can send additional messages too. The sky is the limit.
