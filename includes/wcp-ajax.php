@@ -1,8 +1,9 @@
 <?php
-
 /**
  * @author Koen Van den Wijngaert <koen@siteoptimo.com>
  */
+if(!defined('ABSPATH')) exit;
+
 class WCP_AJAX
 {
     public function send_message() {
