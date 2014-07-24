@@ -30,13 +30,8 @@ class WCP_Admin_Order_Note
         }
 
         $message = trim(substr($note_data['comment_content'], 5));
-        $order = new WC_Order($note_data['comment_post_ID']);
-        $billing_phone = get_post_meta($order->id, '_billing_phone', true);
-        $customer = get_post_meta($order->id, '_customer_user', true);
-        $customer_phone = get_user_meta($customer, 'billing_phone', true);
-        $phone = (empty($billing_phone)) ? $customer_phone : $billing_phone;
 
-        $phone = WCP_Tools::cleanPhoneNumber($phone);
+        $phone = WCP_Tools::getPhoneNumberByOrder($note_data['comment_post_ID']);
 
         if($phone && !empty($phone))
         {
