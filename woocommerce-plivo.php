@@ -27,48 +27,49 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/**
- * Check if WooCommerce is active
- */
 if(!defined('ABSPATH'))
 {
     exit;
 }
 
+/**
+ * Check if WooCommerce is active
+ */
 if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins'))))
 {
-
-    if(!defined('WCP_FILE'))
-    {
-        define('WCP_FILE', __FILE__);
-    }
-
-    if(!defined('WCP_PATH'))
-    {
-        define('WCP_PATH', plugin_dir_path(WCP_FILE));
-    }
-
-    if(!defined('WCP_BASENAME'))
-    {
-        define('WCP_BASENAME', plugin_basename(WCP_FILE));
-    }
-
-
     if(!class_exists('WooCommerce_Plivo'))
     {
-
+        /**
+         * Main WooCommerce_Plivo Class
+         *
+         * @class WooCommerce_Plivo
+         * @version 1.0
+         */
         final class WooCommerce_Plivo
         {
-            protected static $_instance = null;
+            /**
+             * @var WooCommerce_Plivo Singleton implementation
+             */
+            private static $_instance = null;
 
+            /**
+             * Current version number
+             *
+             * @var string
+             */
+            public static $version = "1.0";
+
+
+            /**
+             * Constructor method
+             *
+             * Bootstraps the plugin.
+             */
             function __construct()
             {
                 register_activation_hook(__FILE__, array($this, 'activation'));
-                if(function_exists("__autoload"))
-                {
-                    spl_autoload_register("__autoload");
-                }
 
+                // Register the autoloader classes.
                 spl_autoload_register(array($this, 'autoload'));
                 spl_autoload_register(array($this, 'autoload_plivo'));
 
@@ -80,31 +81,50 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 
             }
 
+            /**
+             * Returns an instance of the WooCommerce_Plivo class.
+             *
+             * @return WooCommerce_Plivo
+             */
             public static function instance()
             {
                 if(is_null(self::$_instance))
                 {
+                    // Create instance if not set.
                     self::$_instance = new self();
                 }
 
                 return self::$_instance;
             }
 
+            /**
+             * Checks for plugin compatibility. The HTTP_Request2 class needs to be installed.
+             */
             public function activation()
             {
+                // Let's check if we can include the Request2.php file.
                 @$include = include('HTTP/Request2.php');
 
                 if(!$include)
                 {
+                    // Abort the activation.
                     wp_die('Could not activate plugin, the HTTP_Request2 PEAR plugin is not installed on this webserver.', 'WooCommerce Plivo Plugin', array('response' => 200, 'back_link' => true));
                 }
             }
 
+            /**
+             * Handles file includes, like functions.
+             */
             public function includes()
             {
                 require_once $this->plugin_path() . 'includes/wcp-functions.php';
             }
 
+            /**
+             * Loads the Plivo API library as soon as it is needed.
+             *
+             * @param $class string
+             */
             public function autoload_plivo($class)
             {
                 if($class == "RestAPI")
@@ -113,6 +133,11 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 }
             }
 
+            /**
+             * Autoloads the WooCommerce Plivo classes whenever they are needed.
+             *
+             * @param $class
+             */
             public function autoload($class)
             {
                 if(strpos($class, 'WCP_') !== 0)
@@ -149,85 +174,128 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 return;
             }
 
+            /**
+             * @return string The plugin URL
+             */
             public function plugin_url()
             {
                 return plugins_url('/', __FILE__);
             }
 
+            /**
+             * @return string The plugin path
+             */
             public function plugin_path()
             {
                 return plugin_dir_path(__FILE__);
             }
 
-            private function register_scripts()
+            /**
+             * @return string The plugin basename
+             */
+            public function plugin_basename()
             {
-                add_action('admin_enqueue_scripts', function ()
-                {
-                    wp_register_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), '0.1', true);
-
-                    wp_localize_script('wcp-admin', 'WCP', array('plugin_url' => $this->plugin_url()));
-
-                    wp_enqueue_script('wcp-admin');
-                });
+                return plugin_basename(__FILE__);
             }
 
+            /**
+             * Hooks onto the admin_enqueue_scripts hook.
+             */
+            private function register_scripts()
+            {
+                add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+            }
+
+            /**
+             * Registers, localizes and enqueues the Javascript files.
+             */
+            public function admin_enqueue_scripts()
+            {
+                wp_register_script('wcp-admin', $this->plugin_url() . 'assets/js/admin.js', array('jquery'), self::$version, true);
+
+                wp_localize_script('wcp-admin', 'WCP', array('plugin_url' => $this->plugin_url()));
+
+                wp_enqueue_script('wcp-admin');
+            }
+
+            /**
+             * Initialize.
+             */
             private function init()
             {
-
                 if(is_admin())
                 {
                     $this->admin_hooks();
                 }
 
                 $this->hooks();
-
-
             }
 
+            /**
+             * Enables the needed hooks.
+             */
             private function admin_hooks()
             {
 
-                add_action('init', function ()
-                {
-                    new WCP_Admin_Add_Tab();
-                    new WCP_Admin_Nag_Window();
-                    new WCP_Admin_Add_Settings_Link();
-                    new WCP_Admin_Setting_Fields();
-                });
+                add_action('init', array($this, 'admin_init'));
 
-
+                // First check if the plugin is configured properly.
                 if(is_wcp_ready())
                 {
                     add_filter('woocommerce_new_order_note_data', array('WCP_Admin_Order_Note', 'order_note_data'));
 
-                    add_action('current_screen', function ()
-                    {
-                        $current_screen = get_current_screen()->id;
-
-                        if($current_screen == 'shop_order')
-                        {
-                            new WCP_Admin_Order_Note();
-                        }
-                    });
+                    add_action('current_screen', array($this, 'current_screen'));
 
                     add_action('wp_ajax_wcp_send_message', array(new WCP_AJAX(), 'send_message'));
                 }
             }
 
+            /**
+             * Initializes all of the admin classes.
+             */
+            public function admin_init()
+            {
+                new WCP_Admin_Add_Tab();
+                new WCP_Admin_Nag_Window();
+                new WCP_Admin_Add_Settings_Link();
+                new WCP_Admin_Setting_Fields();
+            }
+
+            /**
+             * Initializes the WCP_Admin_Order_Note class.
+             */
+            public function current_screen()
+            {
+                $current_screen = get_current_screen()->id;
+
+                // Only do this if we are on the edit shop_order screen.
+                if($current_screen == 'shop_order')
+                {
+                    new WCP_Admin_Order_Note();
+                }
+            }
+
+            /**
+             * The site-wide hooks.
+             */
             private function hooks()
             {
                 if(is_wcp_ready())
                 {
-                    add_action('init', function ()
-                    {
-                        new WCP_Status_Hooks();
-                    });
+                    add_action('init', array($this, 'init_status_hooks'));
                 }
             }
 
-
+            /**
+             * Initializes the status hooks.
+             */
+            public function init_status_hooks()
+            {
+                new WCP_Status_Hook();
+            }
         }
 
+        // Our WooCommmerce_Plivo instance.
         $WCP = WooCommerce_Plivo::instance();
     }
 

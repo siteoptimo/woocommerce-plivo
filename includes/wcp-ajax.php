@@ -1,11 +1,21 @@
 <?php
+if(!defined('ABSPATH')) exit;
 /**
+ * Class WCP_AJAX
+ *
+ * Handles the AJAX calls from the admin.
+ *
+ * @package WooCommerce_Plivo
+ * @class WCP_AJAX
  * @author Koen Van den Wijngaert <koen@siteoptimo.com>
  */
-if(!defined('ABSPATH')) exit;
-
 class WCP_AJAX
 {
+    /**
+     * Handles the sending of a test message.
+     *
+     * @return bool|int
+     */
     public function send_message()
     {
 
@@ -23,14 +33,15 @@ class WCP_AJAX
 
             if($number && !empty($number))
             {
-                return $smsService->sendText($number, $_POST['message']);
+                echo (int) $smsService->sendText($number, $_POST['message']);
+                exit();
             }
 
-            return false;
+            exit(0);
 
         } catch(Exception $e)
         {
-            return 0;
+            exit(0);
         }
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * @author SiteOptimo <team@siteoptimo.com>
+ * @package WooCommerce_Plivo
+ */
 (function ($) {
     var $submitButton = $("#wcp_send_button + .description .button");
     var $phoneNumber = $("#wcp_demo_phone_number");
@@ -7,6 +11,7 @@
         $submitButton.on('click', function (e) {
             e.preventDefault();
 
+            // Add loading gif.
             $('a.button').after('<span class="loadbutton" style="position:relative;top:0.2em;"><img src="' + WCP.plugin_url + 'assets/images/wpspin_light.gif" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;">Sending...</span>');
 
             $.ajax({
@@ -18,21 +23,21 @@
                     'message': $message.val()
                 },
                 success: function (data) {
-                    console.log(data);
-                    if (data) {
+                    if (data) { // Success!
                         $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/ok.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:green;font-weight:bold">Sent</span>');
-                    } else {
+                    } else { // Failure :(
                         $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/fail.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:red;font-weight:bold">Error</span>');
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
                     $('span.loadbutton').html('<img src="' + WCP.plugin_url + 'assets/images/fail.png" style="position:relative;top:0.2em;padding-left:1em;padding-right:0.3em;"><span style="color:red;font-weight:bold">Error</span>');
                 },
                 dataType: 'JSON'
 
             });
         });
+
+        // First hide all unneeded textareas.
         $('select option').each(function () {
             if (!$(this).is(':selected')) {
                 var slug = $(this).val();
@@ -40,6 +45,7 @@
             }
         });
 
+        // Next, show and hide matching notification message textareas.
         $('select#wcp_notification').change(function () {
             $('select option').each(function () {
                 var slug = $(this).val();
@@ -51,6 +57,7 @@
             });
         });
 
+        // Add asterisk to required field labels.
         $("label[for='wcp_auth_id'],label[for='wcp_auth_password'],label[for='wcp_from_number']").append('<sup style="color:red">*</sup>');
     }
 })(jQuery);
