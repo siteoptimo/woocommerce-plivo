@@ -42,5 +42,7 @@
                 }
             });
         });
+
+        $("label[for='wcp_auth_id'],label[for='wcp_auth_password']").append('<sup style="color:red">*</sup>');
     }
 })(jQuery);
