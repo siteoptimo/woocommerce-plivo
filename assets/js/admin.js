@@ -37,8 +37,16 @@
             });
         });
 
+    }
+
+    var $notification = $("#wcp_notification");
+
+    if($notification.length > 0) {
+
+        var $options = $notification.find("option");
+
         // First hide all unneeded textareas.
-        $('select option').each(function () {
+        $options.each(function () {
             if (!$(this).is(':selected')) {
                 var slug = $(this).val();
                 $('textarea#wcp_notification_message_' + slug).closest('tr').hide();
@@ -46,8 +54,8 @@
         });
 
         // Next, show and hide matching notification message textareas.
-        $('select#wcp_notification').change(function () {
-            $('select option').each(function () {
+        $notification.change(function () {
+            $options.each(function () {
                 var slug = $(this).val();
                 if ($(this).is(':selected')) {
                     $('textarea#wcp_notification_message_' + slug).closest('tr').show();
