@@ -67,8 +67,6 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
              */
             function __construct()
             {
-                register_activation_hook(__FILE__, array($this, 'activation'));
-
                 // Register the autoloader classes.
                 spl_autoload_register(array($this, 'autoload'));
                 spl_autoload_register(array($this, 'autoload_plivo'));
@@ -103,20 +101,6 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 return self::$_instance;
             }
 
-            /**
-             * Checks for plugin compatibility. The HTTP_Request2 class needs to be installed.
-             */
-            public function activation()
-            {
-                // Let's check if we can include the Request2.php file.
-                @$include = include('HTTP/Request2.php');
-
-                if(!$include)
-                {
-                    // Abort the activation.
-                    wp_die('Could not activate plugin, the HTTP_Request2 PEAR plugin is not installed on this webserver.', 'WooCommerce Plivo Plugin', array('response' => 200, 'back_link' => true));
-                }
-            }
 
             /**
              * Handles file includes, like functions.
