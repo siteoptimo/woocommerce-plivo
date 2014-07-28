@@ -98,12 +98,20 @@ class WCP_Admin_Setting_Fields
         $settings['auth_token'] = array('name' => __('Auth Token', 'woocommerce-plivo'), 'type' => 'password', 'id' => 'wcp_auth_password', 'desc_tip' => __('Required. Needed to make the magic happen.', 'woocommerce-plivo'));
         $settings['from_number'] = array('name' => __('From number', 'woocommerce-plivo'), 'type' => 'text', 'id' => 'wcp_from_number', 'desc_tip' => __('Required. Needed to make the magic happen.', 'woocommerce-plivo'));
         $settings['section_end'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end');
+
+        $settings['optout_settings_title'] = array('name' => __('Opt-in/Opt-out for customers', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('should the customer be able to opt-out of SMS status notifications?', 'woocommerce-plivo'), 'id' => 'wcp_optout_settings_title');
+        $settings['optout_enabled'] = array('name' => __('Enable opt-out for clients', 'woocommerce-plivo'), 'type' => 'checkbox', 'desc' => '', 'id' => 'wcp_optout_enabled', 'default' => 'yes');
+        $settings['optout_default'] = array('name' => __('Opt-in checkbox default', 'woocommerce-plivo'), 'type' => 'select', 'options' => array('checked' => __('Checked', 'woocommerce-plivo'), 'unchecked' => __('Unchecked', 'woocommerce-plivo')), 'desc' => '', 'id' => 'wcp_optout_default', 'default' => 'checked');
+        $settings['optout_message'] = array('name' => __('Opt-in checkbox message', 'woocommerce-plivo'), 'type' => 'text', 'id' => 'wcp_optout_message', 'default' => __('I want to receive SMS notifications.', 'woocommerce-plivo'));
+
+        $settings['section_end2'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end2');
+
         $settings['notification_settings_title'] = array('name' => __('Notification settings and messages', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo'), 'id' => 'wcp_notification_settings_section_title');
         $settings['notification_on'] = array('title' => __('Auto send notification on:', 'woocommerce-plivo'), 'type' => 'multiselect', 'class' => 'multiselect chosen_select', 'id' => 'wcp_notification', 'options' => $this->get_option_terms());
 
         $settings = array_merge($settings, $this->generate_optional_textareas());
 
-        $settings['section_end2'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end');
+        $settings['section_end3'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end3');
 
         $auth_token = get_option('wcp_auth_password', '');
         $auth_id = get_option('wcp_auth_id', '');
