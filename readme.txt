@@ -18,7 +18,7 @@ Current features:
 
 * Auto send status updates
 * Send a test SMS
-* Add optin/optout on checkout
+* Add opt-in/opt-out on checkout
 * Edit status SMS notifications
 * Send an SMS from the order page
 
@@ -30,12 +30,12 @@ Get started now by creating your [free trial account](https://manage.plivo.com/a
 = Requirements =
 To make use of the Plivo API, this plugin requires php-openssl and php-curl to be installed. Obviously, you'll also need a Plivo account.
 
-Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from no on, it's no longer required, but still recommended.
+Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from now on, it's no longer required, but still recommended.
 
 
 = About the authors & support =
 This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com/?utm_source=plivo-plugin&utm_medium=wordpress&utm_campaign=wcp).
-Consider this plugin a well written and functioning beta. We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
+We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
 
 Issues can be reported in our [GitHub Repository](https://github.com/siteoptimo/woocommerce-plivo/issues).
 
@@ -76,7 +76,7 @@ You're free to make feature suggestions, but if it's custom work you want, conta
 
 = 1.1 =
 * Added fallback for the HTTP_Request2 library.
-* Added feature: optin/optout message to checkout.
+* Added feature: opt-in/opt-out message to checkout.
 * Fixed bug where you could only send a test SMS after the Plivo credentials where saved.
 
 = 1.0 =

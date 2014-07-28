@@ -5,6 +5,7 @@ This plugin for WordPress WooCommerce enables the use of the popular platform fo
 Current features:
 * Auto send status updates
 * Send a test SMS
+* Add opt-in/opt-out on checkout
 * Edit status SMS notifications
 * Send an SMS from the order page
 
@@ -19,7 +20,7 @@ Requirements
 ------------
 To make use of the Plivo API, this plugin requires php-openssl, php-curl to be installed. Obviously, you'll need a Plivo account.
 
-Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from no on, it's no longer required, but still recommended.
+Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from now on, it's no longer required, but still recommended.
 
 Installation
 ------------
@@ -28,7 +29,7 @@ Simply download the plugin from the WordPress plugin repository, or download the
 About the authors & support
 ---------------------------
 This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com/?utm_source=plivo-plugin&utm_medium=github&utm_campaign=wcp).
-Consider this plugin a good written and functioning beta. We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
+We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
 
 Issues
 ------
