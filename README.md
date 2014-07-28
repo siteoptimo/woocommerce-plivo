@@ -19,7 +19,7 @@ Requirements
 ------------
 To make use of the Plivo API, this plugin requires php-openssl, php-curl to be installed. Obviously, you'll need a Plivo account.
 
-Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from no on, it's no longer required, but still recommended.
+Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](http://pear.php.net/package/HTTP_Request2). So from no on, it's no longer required, but still recommended.
 
 Installation
 ------------

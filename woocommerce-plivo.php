@@ -43,7 +43,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
          * Main WooCommerce_Plivo Class
          *
          * @class WooCommerce_Plivo
-         * @version 1.0
+         * @version 1.1
          */
         final class WooCommerce_Plivo
         {
@@ -57,7 +57,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
              *
              * @var string
              */
-            public static $version = "1.0";
+            public static $version = "1.1";
 
 
             /**
