@@ -18,6 +18,7 @@ class WCP_Frontend_Add_Fields {
     public function __construct()
     {
         add_filter('woocommerce_checkout_fields', array($this, 'wcp_override_checkout_fields'));
+        add_action('woocommerce_checkout_process', array($this, 'wcp_checkout_field_process'));
     }
 
     /**
@@ -31,11 +32,19 @@ class WCP_Frontend_Add_Fields {
         $fields['order']['get_sms_notification'] = array(
             'label'     => __('Receive SMS status notifications?', 'woocommerce'),
             'type'      => 'checkbox',
+            'default'   => 'yes',
             'required'  => false,
             'clear'     => true
         );
 
         return $fields;
     }
-
-} 
+    /**
+     * Process the optin/optout option.
+     *
+     * @param $order_id
+     */
+    public function wcp_checkout_field_process( $order_id ) {
+            update_post_meta( $order_id, 'SMS notifications', sanitize_text_field( $_POST['get_sms_notification'] ) );
+    }
+}
