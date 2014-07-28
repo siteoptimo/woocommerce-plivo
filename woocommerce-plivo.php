@@ -216,13 +216,16 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 if(is_admin())
                 {
                     $this->admin_hooks();
+                } else
+                {
+                    $this->frontend_hooks();
                 }
 
                 $this->hooks();
             }
 
             /**
-             * Enables the needed hooks.
+             * Enables the needed admin hooks.
              */
             private function admin_hooks()
             {
@@ -249,6 +252,26 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 new WCP_Admin_Nag_Window();
                 new WCP_Admin_Add_Settings_Link();
                 new WCP_Admin_Setting_Fields();
+            }
+
+            /**
+             * Enables the needed frontend hooks.
+             */
+            private function frontend_hooks()
+            {
+                // First check if the plugin is configured properly.
+                if(is_wcp_ready())
+                {
+                    add_action('init', array($this, 'frontend_init'));
+                }
+            }
+
+            /**
+             * Initializes all of the frontend classes.
+             */
+            public function frontend_init()
+            {
+                new WCP_Frontend_Add_Fields();
             }
 
             /**
