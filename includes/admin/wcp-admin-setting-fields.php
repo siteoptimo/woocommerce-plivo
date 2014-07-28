@@ -99,7 +99,7 @@ class WCP_Admin_Setting_Fields
         $settings['from_number'] = array('name' => __('From number', 'woocommerce-plivo'), 'type' => 'text', 'id' => 'wcp_from_number', 'desc_tip' => __('Required. Needed to make the magic happen.', 'woocommerce-plivo'));
         $settings['section_end'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end');
 
-        $settings['optout_settings_title'] = array('name' => __('Opt-in/Opt-out for customers', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('should the customer be able to opt-out of SMS status notifications?', 'woocommerce-plivo'), 'id' => 'wcp_optout_settings_title');
+        $settings['optout_settings_title'] = array('name' => __('Opt-in/Opt-out for customers', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('Should the customer be able to opt-out of SMS status notifications?', 'woocommerce-plivo'), 'id' => 'wcp_optout_settings_title');
         $settings['optout_enabled'] = array('name' => __('Enable opt-out for clients', 'woocommerce-plivo'), 'type' => 'checkbox', 'desc' => '', 'id' => 'wcp_optout_enabled', 'default' => 'yes');
         $settings['optout_default'] = array('name' => __('Opt-in checkbox default', 'woocommerce-plivo'), 'type' => 'select', 'options' => array('yes' => __('Checked', 'woocommerce-plivo'), 'no' => __('Unchecked', 'woocommerce-plivo')), 'desc' => '', 'id' => 'wcp_optout_default', 'default' => 'yes');
         $settings['optout_message'] = array('name' => __('Opt-in checkbox message', 'woocommerce-plivo'), 'type' => 'text', 'id' => 'wcp_optout_message', 'default' => __('I want to receive SMS notifications.', 'woocommerce-plivo'));
