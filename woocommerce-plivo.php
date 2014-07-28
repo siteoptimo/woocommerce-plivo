@@ -73,9 +73,15 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 spl_autoload_register(array($this, 'autoload'));
                 spl_autoload_register(array($this, 'autoload_plivo'));
 
-                $this->includes();
-                $this->register_scripts();
+                // Use the fallback HTTP_Request2 if the PEAR package is not available.
+                if(!$this->HTTP_Request2_Available())
+                {
+                    ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . $this->plugin_path() . 'library');
+                }
 
+                $this->includes();
+
+                $this->register_scripts();
 
                 $this->init();
 
@@ -292,6 +298,20 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
             public function init_status_hooks()
             {
                 new WCP_Status_Hook();
+            }
+
+            /**
+             * Checks for availability of the HTTP_Request2 PEAR package
+             *
+             * @return bool
+             */
+            private function HTTP_Request2_Available()
+            {
+                if(class_exists('HTTP_Request2', false)) return true;
+
+                @$include = include('HTTP/Request2.php');
+
+                return $include === 1;
             }
         }
 

@@ -1,6 +1,4 @@
 <?php
-#require_once trailingslashit(dirname(dirname(__FILE__)) . 'HTTP/Request2.php');
-#require_once 'HTTP/Request2.php';
 require_once 'HTTP/Request2.php';
 
 
