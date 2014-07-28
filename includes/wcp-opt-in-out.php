@@ -2,16 +2,16 @@
 if(!defined('ABSPATH')) exit;
 
 /**
- * Class WCP_Frontend_Add_Fields
+ * Class WCP_Opt_In_Out
  *
- * Adds an optin/optout on checkout
+ * Handles opt in/out functionality.
  *
  * @package WooCommerce_Plivo
- * @class WCP_Frontend_Add_Fields
+ * @class WCP_Opt_In_Out
  * @author Pieter Carette <pieter@siteoptimo.com>
  * @author Koen Van den Wijngaert <koen@siteoptimo.com>
  */
-class WCP_Frontend_Add_Fields
+class WCP_Opt_In_Out
 {
 
     /**
@@ -19,7 +19,7 @@ class WCP_Frontend_Add_Fields
      */
     public function __construct()
     {
-        if(!WCP_Tools::WCP_Optout_Enabled())
+        if(!self::WCP_Optout_Enabled())
         {
             // Nothing to do here.
             return;
@@ -62,13 +62,40 @@ class WCP_Frontend_Add_Fields
     }
 
     /**
-     * Displays opt out meta.
+     * Displays opt out meta on order overview (admin).
      *
      * @param $order
      */
     public function show_optout($order)
     {
-        $sms_notifications = !WCP_Tools::has_user_opted_out($order->id) ? 'Yes' : 'No';
+        $sms_notifications = !self::has_user_opted_out($order->id) ? 'Yes' : 'No';
         echo '<p><strong> ' . __('Wants SMS notifications', 'woocommerce-plivo') . ':</strong><br /> ' . $sms_notifications . '</p>';
+    }
+
+
+
+    /**
+     * Checks if the opt-in/opt-out feature is enabled.
+     *
+     * @return bool
+     */
+    public static function WCP_Optout_Enabled()
+    {
+        $option = get_option('wcp_optout_enabled', 'yes');
+
+        return $option == 'yes';
+    }
+
+    /**
+     * Checks if the order is eligible for SMS notifications
+     *
+     * @param $orderID
+     * @return bool
+     */
+    public static function has_user_opted_out($orderID)
+    {
+        $option = get_post_meta($orderID, '_receive_sms_notifications', true);
+
+        return ($option && $option == 'no');
     }
 }

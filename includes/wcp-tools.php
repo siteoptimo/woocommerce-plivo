@@ -77,29 +77,4 @@ class WCP_Tools
     {
         return get_option('wcp_notification_message_' . $orderStatus);
     }
-
-    /**
-     * Checks if the opt-in/opt-out feature is enabled.
-     *
-     * @return bool
-     */
-    public static function WCP_Optout_Enabled()
-    {
-        $option = get_option('wcp_optout_enabled', 'yes');
-
-        return $option == 'yes';
-    }
-
-    /**
-     * Checks if the order is eligible for SMS notifications
-     *
-     * @param $orderID
-     * @return bool
-     */
-    public static function has_user_opted_out($orderID)
-    {
-        $option = get_post_meta($orderID, '_receive_sms_notifications', true);
-
-        return ($option && $option == 'no');
-    }
 }
