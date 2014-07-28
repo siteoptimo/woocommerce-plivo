@@ -216,10 +216,9 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 if(is_admin())
                 {
                     $this->admin_hooks();
-                } else
-                {
-                    $this->frontend_hooks();
                 }
+
+                $this->frontend_hooks();
 
                 $this->hooks();
             }
