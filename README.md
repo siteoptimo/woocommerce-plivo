@@ -33,4 +33,4 @@ We made it freely available for the WordPress and WooCommerce community. We migh
 
 Issues
 ------
-If you find an issue or if you have an suggestion for an improvement, [please let us know](https://github.com/siteoptimo/woocommerce-plivo/issues/new)!
+If you find an issue or a suggestion for an improvement, [please let us know](https://github.com/siteoptimo/woocommerce-plivo/issues/new)!
