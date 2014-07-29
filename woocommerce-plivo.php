@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WooCommerce Plivo
-Version: 1.0
+Version: 1.1
 Plugin URI: http://www.siteoptimo.com/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wcplivoplugin
 Description: Send SMS update notifications to your customers with this Plivo plugin for WooCommerce.
 Author: SiteOptimo
