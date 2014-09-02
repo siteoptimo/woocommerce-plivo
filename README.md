@@ -33,7 +33,7 @@ Simply download the plugin from the WordPress plugin repository, or download the
 
 About the authors & support
 ---------------------------
-This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com/?utm_source=plivo-plugin&utm_medium=github&utm_campaign=wcp).
+This plugin is written by the brave and handsome coders of [SiteOptimo](https://www.siteoptimo.com/?utm_source=plivo-plugin&utm_medium=github&utm_campaign=wcp).
 We made it freely available for the WordPress and WooCommerce community. We might build more custom work in the future.
 
 Issues

@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: woocommerce, plivo, sms, notifications, support, update, cart, status, shipping, notification
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.1
+Stable tag: 1.2
 
 Allow your WooCommerce website to send SMS notifications to your customers.
 
