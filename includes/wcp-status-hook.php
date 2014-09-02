@@ -52,7 +52,7 @@ class WCP_Status_Hook
         {
             $phone = WCP_Tools::getPhoneNumberByOrder($orderID);
 
-            $message = WCP_Tools::getTextMessageByOrderStatus($newStatus);
+            $message = apply_filters('wcp_extra_order_status_changed_message', WCP_Tools::getTextMessageByOrderStatus($newStatus), $orderID, $newStatus);
 
             $order = new WC_Order($orderID);
 

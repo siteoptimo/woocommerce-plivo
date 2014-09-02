@@ -108,6 +108,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
             public function includes()
             {
                 require_once $this->plugin_path() . 'includes/wcp-functions.php';
+                require_once $this->plugin_path() . 'includes/wcp-wpml-integration.php';
             }
 
             /**
