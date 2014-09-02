@@ -8,13 +8,18 @@ Current features:
 * Add opt-in/opt-out on checkout
 * Edit status SMS notifications
 * Send an SMS from the order page
+* WPML compatible
+
+Extra customer trust
+--------------------
+Your customers will love it. Sending SMS notifications is a great way to let customers know the current order status and will increase positive reviews.
+Get what the big boys are using and add a more physical dimension to the shop.
 
 Powered by Plivo
 ----------------
 Plivo is an awesome cloud based API platform for building Voice and SMS enabled applications. We make use of the Plivo API to send all the messages.
-Support for over 200 countries and competitive pricing makes Plivo a nobrainer.
+Support for over 200 countries and competitive pricing makes Plivo a nobrainer.  Prices starting at $0,0065 per text!
 Get started now by creating your [free trial account](https://manage.plivo.com/accounts/register/?utm_source=plivo-plugin&utm_medium=wordpress&utm_campaign=siteoptimo).
-
 
 Requirements
 ------------
@@ -33,4 +38,4 @@ We made it freely available for the WordPress and WooCommerce community. We migh
 
 Issues
 ------
-If you find an issue or a suggestion for an improvement, [please let us know](https://github.com/siteoptimo/woocommerce-plivo/issues/new)!
+If you find an issue or if you have an suggestion for an improvement, [please let us know](https://github.com/siteoptimo/woocommerce-plivo/issues/new)!
