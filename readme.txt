@@ -12,7 +12,7 @@ Allow your WooCommerce website to send SMS notifications to your customers.
 
 == Description ==
 
-This plugin for WordPress WooCommerce enables to automatically send SMS status notifications to your customers.
+This Plivo plugin for WordPress WooCommerce makes sending SMS status notifications easy. Your customers will love it.
 
 Current features:
 
@@ -21,11 +21,19 @@ Current features:
 * Add opt-in/opt-out on checkout
 * Edit status SMS notifications
 * Send an SMS from the order page
+* WPML compatible
+
+= Extra customer trust =
+Your customers will love it. Sending SMS notifications is a great way to let customers know the current order status and will increase positive reviews.
+Get what the big boys are using and add a more physical dimension to the shop.
 
 = Powered by Plivo =
 [Plivo](http://www.plivo.com) is an awesome cloud based API platform for building Voice and SMS enabled applications. We make use of the Plivo API to send all the messages.
-Support for over 200 countries and competitive pricing makes Plivo a nobrainer.
+Support for over 200 countries and competitive pricing makes Plivo a nobrainer. Prices starting at $0,0065 per text!
 Get started now by creating your [free trial account](https://manage.plivo.com/accounts/register/?utm_source=plivo-plugin&utm_medium=wordpress&utm_campaign=siteoptimo).
+
+= WPML compatible =
+This plugin is WPML compatible. Multilingual shops can now auto send status notifications in the language of the customer.
 
 = Requirements =
 To make use of the Plivo API, this plugin requires php-openssl and php-curl to be installed. Obviously, you'll also need a Plivo account.
@@ -73,6 +81,9 @@ You're free to make feature suggestions, but if it's custom work you want, conta
 3. Your order notification changes are now sent automatically. You can send additional messages too. The sky is the limit.
 
 == Changelog ==
+
+= 1.2 =
+* Added full WPML support
 
 = 1.1 =
 * Added fallback for the HTTP_Request2 library.
