@@ -48,6 +48,8 @@ class WCP_Status_Hook
         // Bail if the user has opted out of SMS notifications.
         if(WCP_Opt_In_Out::WCP_Optout_Enabled() && WCP_Opt_In_Out::has_user_opted_out($orderID)) return false;
 
+	    $newStatus = 'wc-' . $newStatus;
+
         if(in_array($newStatus, self::$statuses))
         {
             $phone = WCP_Tools::getPhoneNumberByOrder($orderID);

@@ -10,7 +10,6 @@ Text Domain: woocommerce-plivo
 Domain Path: /i18n/languages/
 License: GPL v3
 
-WordPress SEO Plugin
 Copyright (C) 2014, SiteOptimo - team@siteoptimo.com
 
 This program is free software: you can redistribute it and/or modify

@@ -38,32 +38,15 @@ class WCP_Admin_Setting_Fields
     }
 
     /**
-     * Gets the order statuses.
-     *
-     * @return array The terms.
-     */
-    private function get_status_terms()
-    {
-        $terms = get_terms('shop_order_status', array('hide_empty' => 0, 'orderby' => 'id'));
-
-        return $terms;
-    }
-
-    /**
      * Gets the option values for the order statuses.
      *
      * @return array The option terms.
      */
-    private function get_option_terms()
+    private function get_order_statuses()
     {
-        $terms = $this->get_status_terms();
-        $optionterms = array();
-        foreach($terms as $term)
-        {
-            $optionterms[$term->slug] = $term->name;
-        }
+	    $statuses = wc_get_order_statuses();
 
-        return $optionterms;
+	    return $statuses;
     }
 
     /**
@@ -73,11 +56,11 @@ class WCP_Admin_Setting_Fields
      */
     private function generate_optional_textareas()
     {
-        $terms = $this->get_status_terms();
+	    $statuses = $this->get_order_statuses();
         $textareas = array();
-        foreach($terms as $term)
+        foreach($statuses as $k => $val)
         {
-            $textareas['notification_message_' . $term->slug] = array('title' => __('Auto message for ', 'woocommerce-plivo') . $term->slug, 'type' => 'textarea', 'id' => 'wcp_notification_message_' . $term->slug, 'css' => 'width:100%; height: 65px;', 'class' => 'optional_textarea', 'default' => sprintf(__('{shop_name} status update: Order {order_id} is now %s', 'woocommerce-plivo'), $term->slug),);
+            $textareas['notification_message_' . $k] = array('title' => __('Auto message for ', 'woocommerce-plivo') . $val, 'type' => 'textarea', 'id' => 'wcp_notification_message_' . $k, 'css' => 'width:100%; height: 65px;', 'class' => 'optional_textarea', 'default' => sprintf(__('{shop_name} status update: Order {order_id} is now %s.', 'woocommerce-plivo'), strtolower($val)));
         }
 
         return $textareas;
@@ -107,7 +90,7 @@ class WCP_Admin_Setting_Fields
         $settings['section_end2'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end2');
 
         $settings['notification_settings_title'] = array('name' => __('Notification settings and messages', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo'), 'id' => 'wcp_notification_settings_section_title');
-        $settings['notification_on'] = array('title' => __('Auto send notification on:', 'woocommerce-plivo'), 'type' => 'multiselect', 'class' => 'multiselect chosen_select', 'id' => 'wcp_notification', 'options' => $this->get_option_terms());
+        $settings['notification_on'] = array('title' => __('Auto send notification on:', 'woocommerce-plivo'), 'type' => 'multiselect', 'class' => 'multiselect chosen_select', 'id' => 'wcp_notification', 'options' => $this->get_order_statuses());
 
         $settings = array_merge($settings, $this->generate_optional_textareas());
 
