@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress WooCommerce Plivo v1.0.0\n"
 "Report-Msgid-Bugs-To: Pieter Carette <pieter@siteoptimo.com>\n"
-"POT-Creation-Date: 2014-07-28 15:28+0100\n"
+"POT-Creation-Date: 2014-09-26 08:38+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pieter Carette <pieter@siteoptimo.com>\n"
 "Language-Team: SiteOptimo <team@siteoptimo.com>\n"
@@ -22,6 +22,10 @@ msgstr ""
 "X-Poedit-Basepath: ../../\n"
 "X-Generator: Poedit 1.6.7\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: includes/admin/wcp-admin-add-settings-link.php:31
+msgid "Settings"
+msgstr "Instellingen"
 
 #: includes/admin/wcp-admin-add-tab.php:31
 msgid "SMS"
@@ -43,7 +47,7 @@ msgstr "Verberg dit bericht"
 msgid "Send as SMS?"
 msgstr "Stuur een test SMS?"
 
-#: includes/admin/wcp-admin-order-note.php:64 includes/wcp-status-hook.php:73
+#: includes/admin/wcp-admin-order-note.php:64 includes/wcp-status-hook.php:75
 #, php-format
 msgid "Sent \"%s\" to %s."
 msgstr "\"%s\" verzonden naar %s."
@@ -59,20 +63,20 @@ msgid "Could not send text \"%s\", the phone number was missing or invalid."
 msgstr ""
 "Kon \"%s\" niet versturen, het telefoonnummer was niet aanwezig of fout."
 
-#: includes/admin/wcp-admin-setting-fields.php:80
+#: includes/admin/wcp-admin-setting-fields.php:63
 msgid "Auto message for "
 msgstr "Stuur automatisch een bericht bij "
 
-#: includes/admin/wcp-admin-setting-fields.php:80
+#: includes/admin/wcp-admin-setting-fields.php:63
 #, php-format
-msgid "{shop_name} status update: Order {order_id} is now %s"
-msgstr "{shop_name} status update: Bestelling {order_id} is nu %s"
+msgid "{shop_name} status update: Order {order_id} is now %s."
+msgstr "{shop_name} status update: Bestelling {order_id} is nu %s."
 
-#: includes/admin/wcp-admin-setting-fields.php:94
+#: includes/admin/wcp-admin-setting-fields.php:77
 msgid "Plivo Settings"
 msgstr "Plivo Instellingen"
 
-#: includes/admin/wcp-admin-setting-fields.php:94
+#: includes/admin/wcp-admin-setting-fields.php:77
 msgid ""
 "Find your Plivo Auth ID and Auth Token on your <a href=\"https://manage."
 "plivo.com/dashboard/\" target=\"_blank\">Plivo Dashboard</a> page. Get your "
@@ -84,62 +88,62 @@ msgstr ""
 "vind je terug op de <a href=\"https://manage.plivo.com/number/\" target="
 "\"_blank\">de Plivo numbers tab</a>."
 
-#: includes/admin/wcp-admin-setting-fields.php:96
+#: includes/admin/wcp-admin-setting-fields.php:79
 msgid "Auth ID"
 msgstr "Auth ID"
 
-#: includes/admin/wcp-admin-setting-fields.php:96
-#: includes/admin/wcp-admin-setting-fields.php:98
-#: includes/admin/wcp-admin-setting-fields.php:99
+#: includes/admin/wcp-admin-setting-fields.php:79
+#: includes/admin/wcp-admin-setting-fields.php:81
+#: includes/admin/wcp-admin-setting-fields.php:82
 msgid "Required. Needed to make the magic happen."
 msgstr "Verplicht. Nodig om de boel te laten werken."
 
-#: includes/admin/wcp-admin-setting-fields.php:98
+#: includes/admin/wcp-admin-setting-fields.php:81
 msgid "Auth Token"
 msgstr "Auth Token"
 
-#: includes/admin/wcp-admin-setting-fields.php:99
+#: includes/admin/wcp-admin-setting-fields.php:82
 msgid "From number"
 msgstr "Afzender telefoonnummer"
 
-#: includes/admin/wcp-admin-setting-fields.php:102
+#: includes/admin/wcp-admin-setting-fields.php:85
 msgid "Opt-in/Opt-out for customers"
 msgstr "Opt-in/Opt-out voor klanten"
 
-#: includes/admin/wcp-admin-setting-fields.php:102
+#: includes/admin/wcp-admin-setting-fields.php:85
 msgid "Should the customer be able to opt-out of SMS status notifications?"
 msgstr "Mag de klant de SMS notificaties uitzetten?"
 
-#: includes/admin/wcp-admin-setting-fields.php:103
+#: includes/admin/wcp-admin-setting-fields.php:86
 msgid "Enable opt-out for clients"
 msgstr "Opt-out toestaan?"
 
-#: includes/admin/wcp-admin-setting-fields.php:104
+#: includes/admin/wcp-admin-setting-fields.php:87
 msgid "Opt-in checkbox default"
 msgstr "Opt-in standaard"
 
-#: includes/admin/wcp-admin-setting-fields.php:104
+#: includes/admin/wcp-admin-setting-fields.php:87
 msgid "Checked"
 msgstr "Aangevinkt"
 
-#: includes/admin/wcp-admin-setting-fields.php:104
+#: includes/admin/wcp-admin-setting-fields.php:87
 msgid "Unchecked"
 msgstr "Niet aangevinkt"
 
-#: includes/admin/wcp-admin-setting-fields.php:105
+#: includes/admin/wcp-admin-setting-fields.php:88
 msgid "Opt-in checkbox message"
 msgstr "Opt-in bericht"
 
-#: includes/admin/wcp-admin-setting-fields.php:105
+#: includes/admin/wcp-admin-setting-fields.php:88
 #: includes/wcp-opt-in-out.php:43
 msgid "I want to receive SMS notifications."
 msgstr "Ik wil SMS notificaties ontvangen."
 
-#: includes/admin/wcp-admin-setting-fields.php:109
+#: includes/admin/wcp-admin-setting-fields.php:92
 msgid "Notification settings and messages"
 msgstr "Notificatie instellingen en berichten"
 
-#: includes/admin/wcp-admin-setting-fields.php:109
+#: includes/admin/wcp-admin-setting-fields.php:92
 msgid ""
 "Choose when to send a status notification message and modify the content of "
 "the messages."
@@ -147,31 +151,31 @@ msgstr ""
 "Kies welke statusberichten verstuurd moeten worden en bepaal zelf de inhoud "
 "van de berichten."
 
-#: includes/admin/wcp-admin-setting-fields.php:110
+#: includes/admin/wcp-admin-setting-fields.php:93
 msgid "Auto send notification on:"
 msgstr "Stuur notificaties bij:"
 
-#: includes/admin/wcp-admin-setting-fields.php:122
+#: includes/admin/wcp-admin-setting-fields.php:105
 msgid "Send a test SMS"
 msgstr "Stuur een test SMS"
 
-#: includes/admin/wcp-admin-setting-fields.php:123
+#: includes/admin/wcp-admin-setting-fields.php:106
 msgid "Phone Number"
 msgstr "Telefoonnummer"
 
-#: includes/admin/wcp-admin-setting-fields.php:123
+#: includes/admin/wcp-admin-setting-fields.php:106
 msgid "Phone number to send the test message to."
 msgstr "Telefoonnummer waar het testbericht naar verstuurd mag worden."
 
-#: includes/admin/wcp-admin-setting-fields.php:125
+#: includes/admin/wcp-admin-setting-fields.php:108
 msgid "Message"
 msgstr "Bericht"
 
-#: includes/admin/wcp-admin-setting-fields.php:125
+#: includes/admin/wcp-admin-setting-fields.php:108
 msgid "Test message to send to your mobile."
 msgstr "Testbericht die verstuurd mag worden."
 
-#: includes/admin/wcp-admin-setting-fields.php:126
+#: includes/admin/wcp-admin-setting-fields.php:109
 msgid "Send"
 msgstr "Verstuur"
 
@@ -179,12 +183,12 @@ msgstr "Verstuur"
 msgid "Wants SMS notifications"
 msgstr "Wilt SMS notificaties"
 
-#: includes/wcp-status-hook.php:76
+#: includes/wcp-status-hook.php:78
 #, php-format
 msgid "Could not send \"%s\" to %s."
 msgstr "Kon \"%s\" niet verzenden naar %s."
 
-#: includes/wcp-status-hook.php:86
+#: includes/wcp-status-hook.php:88
 msgid ""
 "Could not text status update to customer. The SMS service returned an "
 "exception."
@@ -192,7 +196,7 @@ msgstr ""
 "De status update kon niet verstuurd worden naar de klant. De SMS service gaf "
 "een fout."
 
-#: includes/wcp-status-hook.php:90
+#: includes/wcp-status-hook.php:92
 msgid ""
 "Could not text status update to customer. Either the phone number or the "
 "status message were invalid."
