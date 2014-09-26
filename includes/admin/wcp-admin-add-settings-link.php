@@ -28,7 +28,7 @@ class WCP_Admin_Add_Settings_Link
      */
     public function wcp_settings_link($links)
     {
-        $settings_link = '<a href="admin.php?page=wc-settings&tab=woocommerce_sms_settings">Settings</a>';
+        $settings_link = '<a href="admin.php?page=wc-settings&tab=woocommerce_sms_settings">'.__('Settings','woocommerce-plivo').'</a>';
         array_unshift($links, $settings_link);
 
         return $links;
