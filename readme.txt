@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: woocommerce, plivo, sms, notifications, support, update, cart, status, shipping, notification
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.2
+Stable tag: 1.3
 
 Allow your WooCommerce website to send SMS notifications to your customers.
 
@@ -37,9 +37,6 @@ This plugin is WPML compatible. Multilingual shops can now auto send status noti
 
 = Requirements =
 To make use of the Plivo API, this plugin requires php-openssl and php-curl to be installed. Obviously, you'll also need a Plivo account.
-
-Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](https://github.com/pear/HTTP_Request2). So from now on, it's no longer required, but still recommended.
-
 
 = About the authors & support =
 This plugin is written by the brave and handsome coders of [SiteOptimo](http://www.siteoptimo.com/?utm_source=plivo-plugin&utm_medium=wordpress&utm_campaign=wcp).
@@ -81,6 +78,10 @@ You're free to make feature suggestions, but if it's custom work you want, conta
 3. Your order notification changes are now sent automatically. You can send additional messages too. The sky is the limit.
 
 == Changelog ==
+
+= 1.3 =
+* Translation update
+* Fixed compatibility with WooCommerce 2.2.
 
 = 1.2 =
 * Added full WPML support
