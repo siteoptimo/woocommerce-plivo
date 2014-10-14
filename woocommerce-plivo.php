@@ -295,6 +295,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
                 if(is_wcp_ready())
                 {
                     add_action('init', array($this, 'init_status_hooks'));
+	                add_action( 'plugins_loaded', array( $this, 'load_translations' ) );
                 }
             }
 
@@ -319,6 +320,15 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
 
                 return $include === 1;
             }
+
+
+	        /**
+	         * Load translations.
+	         */
+	        public function load_translations()
+	        {
+		        load_plugin_textdomain('woocommerce-plivo', false, dirname($this->plugin_basename()) . '/i18n/languages/');
+	        }
         }
 
         // Our WooCommmerce_Plivo instance.
