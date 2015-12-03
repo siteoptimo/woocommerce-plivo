@@ -25,11 +25,37 @@ Requirements
 ------------
 To make use of the Plivo API, this plugin requires php-openssl, php-curl to be installed. Obviously, you'll need a Plivo account.
 
-Version 1.1 note: we have written a fallback for the required [pear package HTTP_Request2](http://pear.php.net/package/HTTP_Request2). So from now on, it's no longer required, but still recommended.
+Version 1.1 note: we have included a fallback for the required [pear package HTTP_Request2](http://pear.php.net/package/HTTP_Request2). So from now on, it's no longer required, but still recommended.
 
 Installation
 ------------
 Simply download the plugin from the WordPress plugin repository, or download the current working version from Github.
+
+Extendable
+----------
+You can also add custom variables to the message that is being sent, you can it like this. 
+
+    add_filter('wcp_variables', function($variables) {
+        $variables['test'] = __('Test Description');
+    
+        return $variables;
+    });
+    
+    add_filter('wcp_variable_values', function($values, $order_id) {
+        $values['test'] = 'Your order ID is ' . $order_id;
+    
+        return $values;
+    }, 10, 2);
+
+Alternatively, you can also change the message altogether using the *wcp_order_status_changed_message* hook:
+
+    add_filter('wcp_order_status_changed_message', function($message, $orderID, $newStatus) {
+        
+        // do magic
+        
+        return $message;    
+    }, 10, 3);
+
 
 About the authors & support
 ---------------------------
