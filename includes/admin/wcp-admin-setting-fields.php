@@ -89,7 +89,26 @@ class WCP_Admin_Setting_Fields
 
         $settings['section_end2'] = array('type' => 'sectionend', 'id' => 'wcp_settings_section_end2');
 
-        $settings['notification_settings_title'] = array('name' => __('Notification settings and messages', 'woocommerce-plivo'), 'type' => 'title', 'desc' => __('Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo'), 'id' => 'wcp_notification_settings_section_title');
+        $desc  = __( 'Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo' );
+        $desc .= '<br>' . __('Available variables are: ', 'woocommerce-plivo');
+        $desc .= '<ul>';
+        $sh        = wcp_get_status_hook();
+        $variables = $sh->getVariables();
+
+        foreach($variables as $k => $v) {
+            $desc .= '<li><em>{' . esc_html($k) . '}</em>: ' . esc_html($v) . '</li>';
+        }
+
+        $desc .= '</ul>';
+
+        $settings['notification_settings_title'] = array(
+            'name' => __( 'Notification settings and messages',
+                'woocommerce-plivo' ),
+            'type' => 'title',
+            'desc' => $desc,
+            'id'   => 'wcp_notification_settings_section_title'
+        );
+
         $settings['notification_on'] = array('title' => __('Auto send notification on:', 'woocommerce-plivo'), 'type' => 'multiselect', 'class' => 'multiselect chosen_select', 'id' => 'wcp_notification', 'options' => $this->get_order_statuses());
 
         $settings = array_merge($settings, $this->generate_optional_textareas());

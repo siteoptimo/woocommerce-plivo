@@ -65,7 +65,8 @@ class WCP_Status_Hook
                     // Load the SMS Service.
                     $smsService = WCP_SMS_Service::instance();
 
-                    $message = apply_filters('wcp_order_status_changed_message', $message);
+                    // Apply filters (includes the variables)
+                    $message = apply_filters('wcp_order_status_changed_message', $message, $orderID, $newStatus);
 
                     // Send the text message.
                     $sent = $smsService->sendText($phone, $message);
@@ -104,30 +105,34 @@ class WCP_Status_Hook
      */
     public function replaceMessageVariables($message)
     {
-        return preg_replace_callback('~\{([^\}]+)\}~', array($this, 'replaceVariable'), $message);
-    }
+        $variables = $this->getVariables();
+        $values = $this->getVariableValues(self::$orderID);
+        $search = $replace = array();
 
-    /**
-     * Callback function. Replaces the variables in the message.
-     *
-     * @param $var
-     * @return string|integer
-     */
-    public function replaceVariable($var)
-    {
-        $variable = $var[0];
-        $search = array('{shop_name}', '{home_url}');
-        $replace = array(get_option('blogname'), home_url());
-
-        switch($variable)
-        {
-            case '{order_id}':
-                return self::$orderID;
-                break;
-            default:
-                return str_replace($search, $replace, $variable);
+        foreach($values as $var => $value) {
+            if(array_key_exists($var, $variables)) {
+                array_push($search, '{' . $var . '}');
+                array_push($replace, $value);
+            }
         }
 
+        return str_replace($search, $replace, $message);
+    }
+
+    public function getVariables() {
+        return apply_filters('wcp_variables', array(
+            'order_id' => __('The ID of the order.', 'woocommerce-plivo'),
+            'home_url' => __('The home URL.', 'woocommerce-plivo'),
+            'shop_name' => __('The name of the shop.', 'woocommerce-plivo'),
+        ));
+    }
+
+    public function getVariableValues($order_id) {
+        return apply_filters('wcp_variable_values', array(
+            'order_id' => $order_id,
+            'home_url' => get_option('blogname'),
+            'shop_name' => home_url(),
+        ), $order_id);
     }
 
     /**

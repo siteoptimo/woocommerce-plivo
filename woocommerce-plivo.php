@@ -58,6 +58,11 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
              */
             public static $version = "1.3.1";
 
+            /**
+             * @var WCP_Status_Hook
+             */
+            private $statusHook;
+
 
             /**
              * Constructor method
@@ -304,7 +309,14 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
              */
             public function init_status_hooks()
             {
-                new WCP_Status_Hook();
+                $this->statusHook = new WCP_Status_Hook();
+            }
+
+            /**
+             * @return WCP_Status_Hook
+             */
+            public function getStatusHook() {
+                return $this->statusHook;
             }
 
             /**
@@ -332,7 +344,7 @@ if(in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_o
         }
 
         // Our WooCommmerce_Plivo instance.
+        global $WCP;
         $WCP = WooCommerce_Plivo::instance();
     }
-
 }
