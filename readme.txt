@@ -79,6 +79,8 @@ You're free to make feature suggestions, but if it's custom work you want, conta
 
 3. Your order notification changes are now sent automatically. You can send additional messages too. The sky is the limit.
 
+4. Add your own custom variables to the message.
+
 == Changelog ==
 
 = 2.0.0 =
