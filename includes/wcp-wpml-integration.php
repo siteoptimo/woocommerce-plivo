@@ -20,7 +20,7 @@ if(!class_exists('WPML_Compatibility')) :
 
         function init()
         {
-            add_filter('wcp_after_order_status_changed_message', array($this, 'translate_message_to_order_lang'), 10, 3);
+            add_filter('wcp_extra_order_status_changed_message', array($this, 'translate_message_to_order_lang'), 10, 3);
         }
 
         function translate_message_to_order_lang($message, $id, $newStatus)
