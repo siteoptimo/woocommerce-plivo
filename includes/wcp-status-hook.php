@@ -54,6 +54,8 @@ class WCP_Status_Hook
         {
             $phone = WCP_Tools::getPhoneNumberByOrder($orderID);
 
+            $phone = apply_filters('wcp_phone_number', $phone, $orderID);
+
             $message = apply_filters('wcp_extra_order_status_changed_message', WCP_Tools::getTextMessageByOrderStatus($newStatus), $orderID, $newStatus);
 
             $order = new WC_Order($orderID);
