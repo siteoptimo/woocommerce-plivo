@@ -105,8 +105,8 @@ class WCP_Status_Hook
      */
     public function replaceMessageVariables($message)
     {
-        $variables = $this->getVariables();
-        $values = $this->getVariableValues(self::$orderID);
+        $variables = WCP_Status_Hook::getVariables();
+        $values = WCP_Status_Hook::getVariableValues( self::$orderID );
         $search = $replace = array();
 
         foreach($values as $var => $value) {
@@ -119,20 +119,20 @@ class WCP_Status_Hook
         return str_replace($search, $replace, $message);
     }
 
-    public function getVariables() {
-        return apply_filters('wcp_variables', array(
-            'order_id' => __('The ID of the order.', 'woocommerce-plivo'),
-            'home_url' => __('The home URL.', 'woocommerce-plivo'),
-            'shop_name' => __('The name of the shop.', 'woocommerce-plivo'),
-        ));
+    public static function getVariables() {
+        return apply_filters( 'wcp_variables', array(
+            'order_id'  => __( 'The ID of the order.', 'woocommerce-plivo' ),
+            'home_url'  => __( 'The home URL.', 'woocommerce-plivo' ),
+            'shop_name' => __( 'The name of the shop.', 'woocommerce-plivo' ),
+        ) );
     }
 
-    public function getVariableValues($order_id) {
-        return apply_filters('wcp_variable_values', array(
-            'order_id' => $order_id,
-            'home_url' => get_option('blogname'),
+    public static function getVariableValues( $order_id ) {
+        return apply_filters( 'wcp_variable_values', array(
+            'order_id'  => $order_id,
+            'home_url'  => get_option( 'blogname' ),
             'shop_name' => home_url(),
-        ), $order_id);
+        ), $order_id );
     }
 
     /**

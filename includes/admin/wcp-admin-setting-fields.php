@@ -92,8 +92,7 @@ class WCP_Admin_Setting_Fields
         $desc  = __( 'Choose when to send a status notification message and modify the content of the messages.', 'woocommerce-plivo' );
         $desc .= '<br>' . __('Available variables are: ', 'woocommerce-plivo');
         $desc .= '<ul>';
-        $sh        = wcp_get_status_hook();
-        $variables = $sh->getVariables();
+        $variables = WCP_Status_Hook::getVariables();
 
         foreach($variables as $k => $v) {
             $desc .= '<li><em>{' . esc_html($k) . '}</em>: ' . esc_html($v) . '</li>';
