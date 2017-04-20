@@ -132,8 +132,8 @@ class WCP_Status_Hook
     public static function getVariableValues( $order_id ) {
         return apply_filters( 'wcp_variable_values', array(
             'order_id'  => $order_id,
-            'home_url'  => get_option( 'blogname' ),
-            'shop_name' => home_url(),
+            'home_url'  => home_url(),
+            'shop_name' => get_option( 'blogname' ),
         ), $order_id );
     }
 
